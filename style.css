@@ -625,6 +625,181 @@ code {
   color: var(--text-dim);
 }
 
+/* ============ HERO LOOP CAPTION ============ */
+.loop-caption {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+/* ============ STATE ANALOG ============ */
+.state-analog {
+  font-size: 0.7rem;
+  color: var(--accent);
+  opacity: 0.7;
+  margin-top: 0.3rem;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+/* ============ NOTE ============ */
+.note {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 212, 170, 0.05);
+  border-left: 2px solid var(--accent-dim);
+  border-radius: 0 4px 4px 0;
+}
+
+.note a { color: var(--accent); }
+
+/* ============ ARCHITECTURE OVERVIEW ============ */
+.arch-overview {
+  margin-bottom: 2rem;
+}
+
+.arch-overview h3 {
+  margin-top: 0;
+}
+
+.arch-phases {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 1.5rem 0;
+}
+
+.arch-phase {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.arch-phase-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-dim);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.75rem;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.arch-phase h4 {
+  margin-bottom: 0.5rem;
+}
+
+.arch-phase p {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+.arch-phase-arrow {
+  color: var(--accent);
+  font-size: 1.5rem;
+  padding: 0 0.75rem;
+  flex-shrink: 0;
+}
+
+/* ============ HARDWARE TABLE ============ */
+.hw-table-wrap {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.hw-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.hw-table th,
+.hw-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.hw-table th {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.hw-table td {
+  color: var(--text);
+}
+
+.hw-table td strong {
+  color: var(--accent);
+}
+
+.hw-table tbody tr:hover {
+  background: var(--bg-card-hover);
+}
+
+/* ============ WEB4 DETAILS ============ */
+.web4-details {
+  margin: 1rem 0;
+}
+
+.web4-details summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-size: 0.9rem;
+  padding: 0.5rem 0;
+}
+
+.web4-details summary:hover {
+  text-decoration: underline;
+}
+
+/* ============ GET STARTED ============ */
+.get-started {
+  border-top: 1px solid var(--accent-dim);
+}
+
+.start-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.start-step {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.start-step h4 {
+  color: var(--accent);
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.start-step .code-block {
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0.75rem 1rem;
+}
+
 /* ============ FOOTER ============ */
 footer {
   padding: 3rem 0;
@@ -703,6 +878,19 @@ footer {
   }
 
   .roadmap-track {
+    grid-template-columns: 1fr;
+  }
+
+  .arch-phases {
+    flex-direction: column;
+  }
+
+  .arch-phase-arrow {
+    transform: rotate(90deg);
+    padding: 0.25rem 0;
+  }
+
+  .start-steps {
     grid-template-columns: 1fr;
   }
 
