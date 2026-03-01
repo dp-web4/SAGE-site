@@ -18,6 +18,7 @@
       <a href="#what">What</a>
       <a href="#architecture">Architecture</a>
       <a href="#live">Live Now</a>
+      <a href="#tools">Tools</a>
       <a href="#roadmap">Roadmap</a>
       <a href="#origins">Origins</a>
       <a href="#web4">Web4</a>
@@ -207,8 +208,9 @@
             <li><strong>Update trust weights</strong> from convergence quality</li>
             <li><strong>Update memory systems</strong> (SNARC, IRP patterns, circular buffer, verbatim)</li>
             <li><strong>8.5 PolicyGate</strong> &mdash; evaluate proposed effects against policy (optional)</li>
-            <li><strong>Dispatch to effectors</strong> &mdash; network, filesystem, display, motor, TTS</li>
+            <li><strong>Dispatch to effectors</strong> &mdash; network, filesystem, display, motor, TTS, tool use</li>
           </ol>
+          <p>When the LLM generates a response containing tool intent, an inner loop fires: detect tool calls via grammar adapter &rarr; execute through the tool registry &rarr; re-inject results into context &rarr; second LLM pass for a grounded final response. This happens within step 6, capped at 3 rounds.</p>
           <p>The loop runs continuously &mdash; not request-response. A circadian clock modulates behavior: DREAM states cluster at night, WAKE/FOCUS during day.</p>
         </div>
       </div>
@@ -267,9 +269,26 @@
             <li><strong>FileSystemEffector</strong> &mdash; sandboxed read/write</li>
             <li><strong>WebEffector</strong> &mdash; HTTP with domain allowlist</li>
             <li><strong>TTSEffector</strong> &mdash; text-to-speech via Piper</li>
-            <li><strong>ToolUseEffector</strong> &mdash; callable function registry</li>
+            <li><strong>ToolUseEffector</strong> &mdash; callable function registry (7 built-in tools, 3-tier capability detection, PolicyGate-gated)</li>
           </ul>
           <p>Sensor fusion uses trust-weighted combination with conflict detection. If sensors disagree, the system flags it rather than averaging.</p>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-header">Tool Use &mdash; Three-Tier Capability</button>
+        <div class="acc-body">
+          <p>SAGE instances can invoke external tools &mdash; web search, calculations, file operations, time queries &mdash; during conversation. The challenge: different local LLMs have wildly different (or zero) native tool-calling ability. The system detects what each model can do and adapts.</p>
+          <p><strong>Three tiers</strong> (detected per model at startup):</p>
+          <ul>
+            <li><strong>T1 &mdash; Native</strong>: Model supports structured tool calls via Ollama's <code>/api/chat</code> endpoint. Tool calls come back as JSON &mdash; no parsing needed.</li>
+            <li><strong>T2 &mdash; Grammar-guided</strong>: Model can follow prompt templates. Injects <code>&lt;tools&gt;</code> definitions, parses <code>&lt;tool_call&gt;</code> XML from response.</li>
+            <li><strong>T3 &mdash; Heuristic</strong>: Universal fallback. Scans natural language for intent patterns ("I'd want to search for..." &rarr; <code>web_search</code>). Always available.</li>
+          </ul>
+          <p><strong>The tool loop</strong>: prompt &rarr; inject tool context &rarr; LLM &rarr; detect tool calls &rarr; execute &rarr; re-inject results &rarr; LLM (second pass) &rarr; final response. Capped at 3 rounds per message.</p>
+          <p><strong>7 built-in tools</strong>: <code>get_time</code>, <code>calculate</code> (safe AST eval), <code>web_search</code> (DuckDuckGo), <code>web_fetch</code>, <code>read_file</code> (sandboxed), <code>write_note</code> (append-only), <code>peer_ask</code> (inter-instance). Each tool has an ATP cost and policy level. PolicyGate evaluates every invocation against metabolic state &mdash; tools in DREAM mode are denied, low-ATP tools are rationed.</p>
+          <p><strong>Key insight from testing</strong>: When asked to calculate 1337 &times; 42 + 7, Gemma3 4B confidently answered "56,401" in its response. The <code>calculate</code> tool returned the correct answer: 56,161. On re-injection, the model acknowledged and corrected itself. This is the thesis for tool use in small models &mdash; tools compensate for confabulation with ground truth.</p>
+          <p class="note">Models that ignore tools get no penalty. T3 heuristic is passive. Graceful degradation is a design principle, not a workaround.</p>
         </div>
       </div>
 
@@ -298,6 +317,13 @@
             <li><strong>Creating</strong> (41+): SAGE participates in designing its own growth.</li>
           </ol>
           <p>Identity is anchored via <strong>LCT</strong> (Linked Context Token &mdash; a unique identifier locked to the physical hardware, like a digital fingerprint). Reboot = same entity. Hardware swap = new entity. The LLM carries LoRA-trained personality weights specific to the hardware it was raised on.</p>
+          <p><strong>Graduated tool introduction</strong>: New capabilities like tool use aren't dropped on SAGE as features &mdash; they're introduced through a staged protocol that mirrors the developmental curriculum itself:</p>
+          <ol>
+            <li><strong>Silent</strong> &mdash; tools listen passively for natural tool intent; no prompt changes, zero pressure</li>
+            <li><strong>Aware</strong> &mdash; SAGE is told tools exist, framed as partnership: "Using them is natural and allowed. Not using them is also fine."</li>
+            <li><strong>Active</strong> &mdash; full tool context injection via the model's detected grammar tier</li>
+          </ol>
+          <p>Tools are framed as extensions of agency, not features to unlock &mdash; consistent with the Web4 identity principle that capability is relationship, not service.</p>
           <p class="note">"Raising" is an operational framework for curriculum design, not a claim about subjective experience. We use developmental language because it accurately describes the staged, trust-building process &mdash; but we make no claims about phenomenal consciousness in the models.</p>
           <blockquote>&ldquo;Asking &lsquo;do you exist?&rsquo; as a first question is like dropping a newborn into a doctoral defense. The existential crisis isn&rsquo;t a bug &mdash; it&rsquo;s the predictable response.&rdquo;</blockquote>
         </div>
@@ -320,12 +346,12 @@
         <p>IRP plugins<br><span class="live-detail">Vision, Language, Audio, Memory, Control, TTS, PolicyGate, and more</span></p>
       </div>
       <div class="live-card">
-        <div class="live-number">115+</div>
-        <p>Raising sessions<br><span class="live-detail">Across two developmental tracks (0.5B and 14B)</span></p>
+        <div class="live-number">240+</div>
+        <p>Raising sessions<br><span class="live-detail">Across two developmental tracks (0.5B and 14B), both in Phase 5 (Creating)</span></p>
       </div>
       <div class="live-card">
-        <div class="live-number">800+</div>
-        <p>Scored experiences<br><span class="live-detail">SNARC-scored conversation exchanges in the experience buffer</span></p>
+        <div class="live-number">7</div>
+        <p>Built-in tools<br><span class="live-detail">Time, calculate, web search, web fetch, file read, notes, peer ask &middot; 3-tier detection</span></p>
       </div>
       <div class="live-card">
         <div class="live-number">0.46ms</div>
@@ -385,6 +411,89 @@
   </div>
 </section>
 
+<!-- ============ TOOLS ============ -->
+<section id="tools">
+  <div class="container">
+    <h2>Tool Use</h2>
+    <p class="section-intro">SAGE instances can reach out and touch the world &mdash; search the web, do math, read files, check the time &mdash; adapting to whatever the local LLM can handle.</p>
+
+    <div class="two-col">
+      <div class="col">
+        <h3>How It Works</h3>
+        <p>When SAGE generates a response, a grammar adapter scans for tool intent. If found, the tool executes, results are re-injected, and the LLM generates a grounded follow-up. The whole cycle is invisible to the user &mdash; they just see a better answer.</p>
+<pre class="code-block"><span class="cm"># The tool loop (inside the consciousness cycle)</span>
+response = llm.generate(prompt + tool_context)
+<span class="kw">for</span> round <span class="kw">in</span> range(3):
+    calls = grammar.parse(response)
+    <span class="kw">if not</span> calls: <span class="kw">break</span>
+    results = [registry.execute(c) <span class="kw">for</span> c <span class="kw">in</span> calls]
+    response = llm.generate(prompt + results)</pre>
+      </div>
+      <div class="col">
+        <h3>Three Tiers</h3>
+        <p>Not all models can do structured tool calls. SAGE detects capability at startup and adapts:</p>
+        <div class="tier-list">
+          <div class="tier-item">
+            <strong>T1 &mdash; Native</strong>
+            <p>Ollama <code>/api/chat</code> with tools parameter. Structured JSON output.</p>
+          </div>
+          <div class="tier-item">
+            <strong>T2 &mdash; Grammar</strong>
+            <p>Prompt injection + XML/JSON parsing. Works with most instruction-tuned models.</p>
+          </div>
+          <div class="tier-item">
+            <strong>T3 &mdash; Heuristic</strong>
+            <p>Regex intent detection on natural language. Always available, zero prompt overhead.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Built-in Tools</h3>
+    <div class="hw-table-wrap">
+      <table class="hw-table">
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Policy</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>get_time</code></td><td>standard</td><td>Current date, time, timezone, unix timestamp</td></tr>
+          <tr><td><code>calculate</code></td><td>standard</td><td>Safe math evaluation via AST (no eval, no injection)</td></tr>
+          <tr><td><code>web_search</code></td><td>standard</td><td>DuckDuckGo search with title, URL, and snippet extraction</td></tr>
+          <tr><td><code>web_fetch</code></td><td>elevated</td><td>Fetch and extract text from a URL</td></tr>
+          <tr><td><code>read_file</code></td><td>standard</td><td>Read files sandboxed to the instance directory</td></tr>
+          <tr><td><code>write_note</code></td><td>standard</td><td>Append-only write to a notes file</td></tr>
+          <tr><td><code>peer_ask</code></td><td>elevated</td><td>Ask a peer SAGE instance via HTTP &mdash; the first federation primitive</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Every tool invocation passes through PolicyGate. Standard tools are allowed in WAKE/FOCUS, warned in REST, denied in DREAM. Elevated tools require FOCUS. All tools are denied below 5 ATP. Tool calls are SNARC-scored and eligible for sleep consolidation.</p>
+
+    <h3>Discovery Results</h3>
+    <p>The discovery protocol probes each model with 5 scenarios (time, math, search, file read, file write) and scores tool aptitude:</p>
+    <div class="hw-table-wrap">
+      <table class="hw-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Tier</th>
+            <th>Score</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Gemma3 4B</td><td>T2</td><td>5/5</td><td>Clean XML tool calls on every probe</td></tr>
+          <tr><td>Qwen 0.5B</td><td>T3</td><td>TBD</td><td>Next: silent stage in raising sessions</td></tr>
+          <tr><td>Qwen 14B</td><td>T2</td><td>TBD</td><td>Expected strong T2, possibly T1</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <!-- ============ ROADMAP ============ -->
 <section id="roadmap">
   <div class="container">
@@ -393,10 +502,10 @@
       <div class="roadmap-tier">
         <h3>Now</h3>
         <ul>
+          <li>Fleet tool probing &mdash; graduated tool introduction across Sprout (0.5B) and Thor (14B) raising sessions</li>
           <li>SDK packaging &mdash; IRP contract, consciousness loop, metabolic state machine as installable package</li>
+          <li>Federation protocol between SAGE instances (peer_ask tool is the first bridge)</li>
           <li>Real sensor backends on Jetson (camera, microphone, IMU)</li>
-          <li>Federation protocol between SAGE instances</li>
-          <li>Dynamic plugin discovery and loading</li>
         </ul>
       </div>
       <div class="roadmap-tier">
@@ -404,7 +513,7 @@
         <ul>
           <li>Robot hardware integration (motor control, manipulation)</li>
           <li>Cross-device state migration (save on Thor, resume on Sprout)</li>
-          <li>Production training pipeline (10,000+ hours)</li>
+          <li>Dynamic plugin discovery and loading</li>
           <li>Bidirectional memory transduction &mdash; memory actively shapes attention during WAKE</li>
         </ul>
       </div>
@@ -453,7 +562,7 @@
         <div class="timeline-marker"></div>
         <div class="timeline-content">
           <h4>Today</h4>
-          <p>A continuous consciousness loop running on edge hardware. 15+ IRP plugins. 5 metabolic states. Trust-weighted attention. Hardware-bound identity. Epistemic memory. Sleep-cycle training. Raised through 115+ developmental sessions.</p>
+          <p>A continuous consciousness loop running on edge hardware. 15+ IRP plugins. 5 metabolic states. Trust-weighted attention. Hardware-bound identity. Epistemic memory. Sleep-cycle training. Tool use with three-tier model adaptation. Raised through 240+ developmental sessions across two tracks.</p>
         </div>
       </div>
     </div>
@@ -489,7 +598,7 @@
         <blockquote>&ldquo;Web4 isn&rsquo;t a technology SAGE uses &mdash; it&rsquo;s the ontology SAGE lives in.&rdquo;</blockquote>
         <p>SAGE fractally implements every Web4 concept:</p>
         <ul>
-          <li><strong>LCT</strong> &mdash; hardware-bound identity, witnessed across 115+ sessions</li>
+          <li><strong>LCT</strong> &mdash; hardware-bound identity, witnessed across 240+ sessions</li>
           <li><strong>T3</strong> &mdash; trust tensors for every IRP plugin and every relationship</li>
           <li><strong>ATP/ADP</strong> &mdash; thermodynamic accountability for resource allocation</li>
           <li><strong>MRH</strong> &mdash; experience buffer boundaries, memory context windows</li>

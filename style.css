@@ -788,6 +788,32 @@ code {
   background: var(--bg-card-hover);
 }
 
+/* ============ TOOL TIER LIST ============ */
+.tier-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.tier-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+
+.tier-item strong {
+  color: var(--accent);
+  font-size: 0.95rem;
+}
+
+.tier-item p {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
 /* ============ WEB4 DETAILS ============ */
 .web4-details {
   margin: 1rem 0;
