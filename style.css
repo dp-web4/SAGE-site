@@ -273,39 +273,39 @@ code {
   text-decoration: underline;
 }
 
-/* ============ AGENT ZERO ============ */
-.agent-zero-figure {
-  float: right;
-  margin: 0 0 1rem 1.5rem;
-  max-width: 200px;
+/* ============ HERO AVATAR ============ */
+.hero-avatar {
+  margin-bottom: 1.5rem;
 }
 
-.agent-zero-img {
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  opacity: 0.9;
-  transition: opacity 0.3s;
+.hero-avatar-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  box-shadow: 0 0 30px var(--accent-dim);
+  transition: box-shadow 0.3s, border-color 0.3s;
 }
 
-.agent-zero-img:hover {
-  opacity: 1;
+.hero-avatar-img:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 40px var(--accent-glow);
 }
 
-.agent-zero-caption {
+.hero-avatar-caption {
+  font-family: 'SF Mono', 'Fira Code', monospace;
   font-size: 0.75rem;
   color: var(--text-dim);
-  text-align: center;
   margin-top: 0.5rem;
   margin-bottom: 0;
-  font-style: italic;
+  letter-spacing: 0.1em;
 }
 
 @media (max-width: 768px) {
-  .agent-zero-figure {
-    float: none;
-    margin: 0 auto 1.5rem;
-    max-width: 160px;
+  .hero-avatar-img {
+    width: 110px;
+    height: 110px;
   }
 }
 
