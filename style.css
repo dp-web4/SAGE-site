@@ -273,6 +273,42 @@ code {
   text-decoration: underline;
 }
 
+/* ============ AGENT ZERO ============ */
+.agent-zero-figure {
+  float: right;
+  margin: 0 0 1rem 1.5rem;
+  max-width: 200px;
+}
+
+.agent-zero-img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  opacity: 0.9;
+  transition: opacity 0.3s;
+}
+
+.agent-zero-img:hover {
+  opacity: 1;
+}
+
+.agent-zero-caption {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .agent-zero-figure {
+    float: none;
+    margin: 0 auto 1.5rem;
+    max-width: 160px;
+  }
+}
+
 /* ============ TWO COLUMN ============ */
 .two-col {
   display: grid;
