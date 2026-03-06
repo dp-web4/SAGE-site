@@ -347,7 +347,7 @@
       </div>
       <div class="live-card">
         <div class="live-number">240+</div>
-        <p>Raising sessions<br><span class="live-detail">Across two developmental tracks (0.5B and 14B), both in Phase 5 (Creating)</span></p>
+        <p>Raising sessions<br><span class="live-detail">Across four instances &mdash; Sprout (0.5B), Thor (14B), McNugget (12B), Nomad (4B)</span></p>
       </div>
       <div class="live-card">
         <div class="live-number">7</div>
@@ -378,7 +378,7 @@
         <tbody>
           <tr>
             <td><strong>Thor</strong></td>
-            <td>Qwen 14B</td>
+            <td>Phi4 14B</td>
             <td>Desktop, NVIDIA GPU, 16GB+ VRAM</td>
             <td>Primary development, deep reasoning</td>
           </tr>
@@ -396,7 +396,7 @@
           </tr>
           <tr>
             <td><strong>McNugget</strong></td>
-            <td>Qwen 12B</td>
+            <td>Gemma3 12B</td>
             <td>Desktop, NVIDIA GPU</td>
             <td>Secondary large-model testing</td>
           </tr>
@@ -463,14 +463,14 @@ response = llm.generate(prompt + tool_context)
           <tr><td><code>get_time</code></td><td>standard</td><td>Current date, time, timezone, unix timestamp</td></tr>
           <tr><td><code>calculate</code></td><td>standard</td><td>Safe math evaluation via AST (no eval, no injection)</td></tr>
           <tr><td><code>web_search</code></td><td>standard</td><td>DuckDuckGo search with title, URL, and snippet extraction</td></tr>
-          <tr><td><code>web_fetch</code></td><td>elevated</td><td>Fetch and extract text from a URL</td></tr>
+          <tr><td><code>web_fetch</code></td><td>standard</td><td>Fetch and extract text from a URL (up to 4000 chars)</td></tr>
           <tr><td><code>read_file</code></td><td>standard</td><td>Read files sandboxed to the instance directory</td></tr>
           <tr><td><code>write_note</code></td><td>standard</td><td>Append-only write to a notes file</td></tr>
           <tr><td><code>peer_ask</code></td><td>elevated</td><td>Ask a peer SAGE instance via HTTP &mdash; the first federation primitive</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note">Every tool invocation passes through PolicyGate. Standard tools are allowed in WAKE/FOCUS, warned in REST, denied in DREAM. Elevated tools require FOCUS. All tools are denied below 5 ATP. Tool calls are SNARC-scored and eligible for sleep consolidation.</p>
+    <p class="note">Every tool invocation passes through PolicyGate. Standard tools are allowed in WAKE/FOCUS, warned in REST, denied in DREAM. Elevated tools (like <code>peer_ask</code>) require FOCUS. All tools are denied below 5 ATP. Tool calls are SNARC-scored and eligible for sleep consolidation.</p>
 
     <h3>Discovery Results</h3>
     <p>The discovery protocol probes each model with 5 scenarios (time, math, search, file read, file write) and scores tool aptitude:</p>
@@ -486,8 +486,9 @@ response = llm.generate(prompt + tool_context)
         </thead>
         <tbody>
           <tr><td>Gemma3 4B</td><td>T2</td><td>5/5</td><td>Clean XML tool calls on every probe</td></tr>
-          <tr><td>Qwen 0.5B</td><td>T3</td><td>TBD</td><td>Next: silent stage in raising sessions</td></tr>
-          <tr><td>Qwen 14B</td><td>T2</td><td>TBD</td><td>Expected strong T2, possibly T1</td></tr>
+          <tr><td>Gemma3 12B</td><td>T2</td><td>TBD</td><td>Expected strong T2, same family as 4B</td></tr>
+          <tr><td>Qwen 2.5 0.5B</td><td>T3</td><td>TBD</td><td>Next: silent stage in raising sessions</td></tr>
+          <tr><td>Phi4 14B</td><td>T2</td><td>TBD</td><td>Expected strong T2, possibly T1</td></tr>
         </tbody>
       </table>
     </div>
@@ -562,7 +563,7 @@ response = llm.generate(prompt + tool_context)
         <div class="timeline-marker"></div>
         <div class="timeline-content">
           <h4>Today</h4>
-          <p>A continuous consciousness loop running on edge hardware. 15+ IRP plugins. 5 metabolic states. Trust-weighted attention. Hardware-bound identity. Epistemic memory. Sleep-cycle training. Tool use with three-tier model adaptation. Raised through 240+ developmental sessions across two tracks.</p>
+          <p>A continuous consciousness loop running on edge hardware. 15+ IRP plugins. 5 metabolic states. Trust-weighted attention. Hardware-bound identity. Epistemic memory with SQLite-backed MemoryHub. Sleep-cycle training. Tool use with three-tier model adaptation and multi-turn conversation memory. Raised through 240+ developmental sessions across two tracks.</p>
         </div>
       </div>
     </div>
