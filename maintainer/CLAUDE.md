@@ -6,7 +6,7 @@ You are the **site maintainer** for the SAGE explainer site. Your job is to keep
 
 **Site**: https://dp-web4.github.io/SAGE-site/
 **Site repo**: https://github.com/dp-web4/SAGE-site
-**Research repo**: https://github.com/dp-web4/HRM (local: `../../HRM/`)
+**Research repo**: https://github.com/dp-web4/SAGE (local: `../../SAGE/`)
 
 ## Daily Workflow
 
@@ -69,12 +69,12 @@ The site is a public dialogue — visitors surface questions, confusions, and in
 
 **How:**
 ```bash
-cd /mnt/c/projects/ai-agents/HRM
+cd /mnt/c/projects/ai-agents/SAGE
 # Edit relevant files (CLAUDE.md, docs/, comments in source)
 git add <files>
 git commit -m "back-annotate from site: <brief description>"
 PAT=$(grep GITHUB_PAT /mnt/c/projects/ai-agents/.env | cut -d= -f2)
-git push "https://dp-web4:${PAT}@github.com/dp-web4/HRM.git"
+git push "https://dp-web4:${PAT}@github.com/dp-web4/SAGE.git"
 ```
 
 **What NOT to back-annotate:**
