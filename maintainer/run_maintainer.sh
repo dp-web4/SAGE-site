@@ -20,6 +20,11 @@ echo "Starting SAGE Site Maintainer Session at $(date)" | tee "$LOG_FILE"
 
 cd "$SCRIPT_DIR"
 
+# GitNexus graph maintenance — ensure indexes are fresh before session
+source /mnt/c/exe/projects/ai-agents/scripts/gitnexus-maintain.sh 2>/dev/null || true
+gitnexus_ensure_fresh "$PROJECT_DIR" 2>>"$LOG_FILE" || true
+gitnexus_ensure_fresh "/mnt/c/exe/projects/ai-agents/SAGE" 2>>"$LOG_FILE" || true
+
 # Check for fresh visitor feedback
 VISITOR_LOG="$PROJECT_DIR/visitor/logs/$DATE.md"
 VISITOR_CONTEXT=""
@@ -70,4 +75,5 @@ if ! git diff --cached --quiet 2>/dev/null; then
     if [ -n "$PAT" ]; then
         git push "https://dp-web4:${PAT}@github.com/dp-web4/SAGE-site.git" 2>/dev/null || true
     fi
+    gitnexus_reindex "$PROJECT_DIR" 2>>"$LOG_FILE" || true
 fi
