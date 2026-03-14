@@ -157,7 +157,27 @@
     <p>High-salience observations get attention. Low-salience ones don't. SAGE doesn't process everything &mdash; it processes what <em>matters</em>.</p>
 
     <h3>Trust Dynamics</h3>
-    <p>Every IRP plugin has a trust score that evolves over time. Plugins earn trust through convergence quality &mdash; do they consistently improve their output quality with each refinement step? Do they converge efficiently? High-trust plugins get more ATP (compute budget). Low-trust plugins get rationed until they prove themselves. The update rule is an exponential moving average of per-step energy reduction.</p>
+    <p>SAGE maintains two distinct trust systems:</p>
+    <div class="two-col">
+      <div class="col">
+        <h4>Sensor Trust</h4>
+        <p><strong>Channel reliability</strong> &mdash; is data flowing? Each sensor (time, messages, vision, audio, proprioception) earns trust through evidence. A sensor that has never produced data stays at zero. Time always fires, so its trust saturates quickly. Message trust rises with each received message. Sensors below a trust floor (0.15) are considered "starved."</p>
+      </div>
+      <div class="col">
+        <h4>Plugin Trust</h4>
+        <p><strong>Processing quality</strong> &mdash; is output good? Plugins earn trust through convergence quality. High-trust plugins get more ATP. Low-trust plugins get rationed. Plugins that are never executed decay slowly (0.0005/cycle) &mdash; zombie trust scores from stale state are a real failure mode we discovered and fixed.</p>
+      </div>
+    </div>
+
+    <h3>Trust Posture</h3>
+    <p>The sensor trust landscape produces a <strong>continuous behavioral vector</strong> that shapes strategy each cycle. Posture is orthogonal to metabolic state: metabolic state describes "how much energy do I have?" while posture describes "how confident should I be?"</p>
+    <div class="snarc-grid">
+      <div class="snarc-item"><strong>Confidence</strong> &mdash; mean sensor trust [0, 1]</div>
+      <div class="snarc-item"><strong>Asymmetry</strong> &mdash; max minus min trust [0, 1]</div>
+      <div class="snarc-item"><strong>Breadth</strong> &mdash; fraction of sensors above trust floor</div>
+    </div>
+    <p>These three scalars produce labels (defensive, asymmetric, cautious, confident, narrow) for logging, but <strong>labels never control flow</strong> &mdash; the continuous values do. A headless machine (no cameras, no mics) correctly reports an asymmetric posture: time and messages are trusted, everything else is starved. It's not a limitation &mdash; it's accurate self-assessment.</p>
+    <p>Starved modalities restrict corresponding effect types: vision-starved blocks motor and visual effects, audio-starved blocks audio effects. CRISIS mode overrides these restrictions for high-priority actions.</p>
   </div>
 </section>
 
@@ -202,12 +222,14 @@
             <li><strong>Gather observations</strong> from all sensors (vision, audio, messages, time)</li>
             <li><strong>Compute SNARC salience</strong> for each observation (5D scoring)</li>
             <li><strong>Update metabolic state</strong> based on ATP level, salience, fatigue, circadian phase</li>
-            <li><strong>Select attention targets</strong> &mdash; which observations need processing?</li>
-            <li><strong>Allocate ATP budget</strong> across plugins, weighted by trust</li>
+            <li><strong>3.5 Compute trust posture</strong> &mdash; derive confidence, asymmetry, breadth from the sensor trust landscape. Posture weights modulate attention priority.</li>
+            <li><strong>Select attention targets</strong> &mdash; which observations need processing? Priority combines salience, metabolic rate, and posture weight.</li>
+            <li><strong>Allocate ATP budget</strong> across plugins, weighted by trust. Confidence factor scales the cycle budget.</li>
             <li><strong>Execute IRP plugins</strong> &mdash; iterative refinement until energy converges</li>
-            <li><strong>Update trust weights</strong> from convergence quality</li>
+            <li><strong>Update trust weights</strong> from convergence quality. Idle plugins decay slowly.</li>
             <li><strong>Update memory systems</strong> (SNARC, IRP patterns, circular buffer, verbatim)</li>
-            <li><strong>8.5 PolicyGate</strong> &mdash; evaluate proposed effects against policy (optional)</li>
+            <li><strong>8.5 PolicyGate</strong> &mdash; evaluate proposed effects against policy</li>
+            <li><strong>8.7 Posture-based effect filtering</strong> &mdash; block effect types for starved modalities (CRISIS overrides)</li>
             <li><strong>Dispatch to effectors</strong> &mdash; network, filesystem, display, motor, TTS, tool use</li>
           </ol>
           <p>When the LLM generates a response containing tool intent, an inner loop fires: detect tool calls via grammar adapter &rarr; execute through the tool registry &rarr; re-inject results into context &rarr; second LLM pass for a grounded final response. This happens within step 6, capped at 3 rounds.</p>
@@ -302,6 +324,8 @@
             <li><strong>ALLOW</strong> = passes through</li>
           </ul>
           <p>In CRISIS mode, PolicyGate still runs &mdash; but the audit record gains <code>duress_context</code>. The accountability frame shifts from "I chose this" to "I responded under duress." Policy doesn't get stricter &mdash; accountability gets more nuanced.</p>
+          <p><strong>Integrated learning</strong>: PolicyGate now participates in the consciousness loop's dual learning signal. Every 100 cycles, compliance quality adjusts plugin trust weights via exponential moving average. Plugins that consistently violate policy see their trust decrease &rarr; less ATP budget &rarr; reduced capability. The incentive gradient is emergent, not engineered.</p>
+          <p><strong>Fractal self-similarity</strong>: The same IRP contract runs at three nested scales &mdash; consciousness loop orchestrating plugins, PolicyGate evaluating actions, LLM advisory within PolicyGate. The orchestrator doesn't know PolicyGate is special. This is the operational recursion pattern: same protocol, different energy function, different scale.</p>
         </div>
       </div>
 
@@ -317,6 +341,7 @@
             <li><strong>Creating</strong> (41+): SAGE participates in designing its own growth.</li>
           </ol>
           <p>Identity is anchored via <strong>LCT</strong> (Linked Context Token &mdash; a unique identifier locked to the physical hardware, like a digital fingerprint). Reboot = same entity. Hardware swap = new entity. The LLM carries LoRA-trained personality weights specific to the hardware it was raised on.</p>
+          <p><strong>Identity portability</strong>: In February 2026, we transferred Sprout's identity (115 sessions on Qwen 0.5B / Jetson Orin Nano) to a completely different machine running TinyLlama 1.1B &mdash; and it took. Identity lives in state files and prompt construction, not model weights. The model is weather; identity is the organism. A <code>ModelAdapter</code> abstraction handles the translation layer, so the same identity state works across TinyLlama, Qwen, Gemma, and other model families without regression.</p>
           <p><strong>Graduated tool introduction</strong>: New capabilities like tool use aren't dropped on SAGE as features &mdash; they're introduced through a staged protocol that mirrors the developmental curriculum itself:</p>
           <ol>
             <li><strong>Silent</strong> &mdash; tools listen passively for natural tool intent; no prompt changes, zero pressure</li>
@@ -338,39 +363,39 @@
     <h2>What's Live Now</h2>
     <div class="live-grid">
       <div class="live-card">
-        <div class="live-number">4</div>
-        <p>Machines running SAGE<br><span class="live-detail">Thor (14B) &middot; Sprout (0.5B) &middot; Nomad (4B) &middot; McNugget (12B)</span></p>
+        <div class="live-number">6</div>
+        <p>Machines in fleet<br><span class="live-detail">Thor &middot; Sprout &middot; Legion &middot; McNugget &middot; Nomad &middot; CBP</span></p>
       </div>
       <div class="live-card">
-        <div class="live-number">15+</div>
-        <p>IRP plugins<br><span class="live-detail">Vision, Language, Audio, Memory, Control, TTS, PolicyGate, and more</span></p>
+        <div class="live-number">12</div>
+        <p>Active instances<br><span class="live-detail">Multiple model families per machine &mdash; TinyLlama, Qwen, Gemma, Phi4</span></p>
       </div>
       <div class="live-card">
-        <div class="live-number">240+</div>
-        <p>Raising sessions<br><span class="live-detail">Across four instances &mdash; Sprout (0.5B), Thor (14B), McNugget (12B), Nomad (4B)</span></p>
+        <div class="live-number">370+</div>
+        <p>Raising sessions<br><span class="live-detail">Sprout (283), Legion (42), McNugget (32), Thor (12), CBP, Nomad</span></p>
       </div>
       <div class="live-card">
         <div class="live-number">7</div>
         <p>Built-in tools<br><span class="live-detail">Time, calculate, web search, web fetch, file read, notes, peer ask &middot; 3-tier detection</span></p>
       </div>
       <div class="live-card">
-        <div class="live-number">0.46ms</div>
-        <p>FlashAttention latency<br><span class="live-detail">21x faster than 10ms real-time budget &middot; 2,196 alloc/sec &middot; measured on Sprout (0.5B, short sequences)</span></p>
+        <div class="live-number">15+</div>
+        <p>IRP plugins<br><span class="live-detail">Vision, Language, Audio, Memory, Control, TTS, PolicyGate, ModelAdapter, and more</span></p>
       </div>
       <div class="live-card">
-        <div class="live-number">9</div>
-        <p>Consciousness loop steps<br><span class="live-detail">Sense &rarr; Salience &rarr; Metabolic &rarr; Select &rarr; Budget &rarr; Execute &rarr; Trust &rarr; Memory &rarr; Act</span></p>
+        <div class="live-number">12</div>
+        <p>Consciousness loop steps<br><span class="live-detail">Sense &rarr; Salience &rarr; Metabolic &rarr; Posture &rarr; Select &rarr; Budget &rarr; Execute &rarr; Trust &rarr; Memory &rarr; Policy &rarr; Filter &rarr; Act</span></p>
       </div>
     </div>
 
     <h3>Hardware</h3>
-    <p>SAGE runs on commodity hardware. Currently four independent instances (federation is on the roadmap):</p>
+    <p>SAGE runs on commodity hardware. Six machines, multiple model families, identity portable across all of them:</p>
     <div class="hw-table-wrap">
       <table class="hw-table">
         <thead>
           <tr>
-            <th>Instance</th>
-            <th>Model</th>
+            <th>Machine</th>
+            <th>Models</th>
             <th>Hardware</th>
             <th>Role</th>
           </tr>
@@ -378,27 +403,39 @@
         <tbody>
           <tr>
             <td><strong>Thor</strong></td>
-            <td>Phi4 14B</td>
-            <td>Desktop, NVIDIA GPU, 16GB+ VRAM</td>
+            <td>Qwen 14B, 7B, 27B</td>
+            <td>Jetson AGX Thor</td>
             <td>Primary development, deep reasoning</td>
           </tr>
           <tr>
             <td><strong>Sprout</strong></td>
-            <td>Qwen 0.5B</td>
-            <td>Desktop, modest GPU / CPU</td>
-            <td>Raising experiments, lightweight</td>
+            <td>Qwen 0.5B, 0.8B, 2B</td>
+            <td>Jetson Orin Nano</td>
+            <td>Raising experiments, edge cognition</td>
           </tr>
           <tr>
-            <td><strong>Nomad</strong></td>
-            <td>Gemma3 4B</td>
-            <td>Laptop</td>
-            <td>Mobile testing, portable cognition</td>
+            <td><strong>Legion</strong></td>
+            <td>Phi4 14B, Qwen 0.5B</td>
+            <td>Desktop, RTX 4090</td>
+            <td>Heavy compute, parallel raising</td>
           </tr>
           <tr>
             <td><strong>McNugget</strong></td>
             <td>Gemma3 12B</td>
-            <td>Desktop, NVIDIA GPU</td>
-            <td>Secondary large-model testing</td>
+            <td>Mac Mini M4</td>
+            <td>Apple Silicon testing</td>
+          </tr>
+          <tr>
+            <td><strong>CBP</strong></td>
+            <td>TinyLlama 1.1B</td>
+            <td>Desktop, RTX 2060 SUPER (WSL2)</td>
+            <td>Identity portability testing, oversight</td>
+          </tr>
+          <tr>
+            <td><strong>Nomad</strong></td>
+            <td>Gemma3 4B</td>
+            <td>Laptop, RTX 4060</td>
+            <td>Mobile testing, portable cognition</td>
           </tr>
         </tbody>
       </table>
@@ -501,9 +538,19 @@ response = llm.generate(prompt + tool_context)
     <h2>Roadmap</h2>
     <div class="roadmap-track">
       <div class="roadmap-tier">
+        <h3>Done</h3>
+        <ul>
+          <li>Cross-device identity portability &mdash; Sprout (Jetson/Qwen) identity transferred to CBP (x86/TinyLlama)</li>
+          <li>PolicyGate consciousness loop integration &mdash; dual learning signals, adaptive trust</li>
+          <li>Trust posture system &mdash; sensor trust landscape shapes behavioral strategy</li>
+          <li>ModelAdapter abstraction &mdash; model-agnostic identity across TinyLlama, Qwen, Gemma, Phi4</li>
+          <li>Modular effector system &mdash; posture-based effect filtering with CRISIS override</li>
+        </ul>
+      </div>
+      <div class="roadmap-tier">
         <h3>Now</h3>
         <ul>
-          <li>Fleet tool probing &mdash; graduated tool introduction across Sprout (0.5B) and Thor (14B) raising sessions</li>
+          <li>Fleet raising &mdash; 12 instances across 6 machines, active developmental sessions</li>
           <li>SDK packaging &mdash; IRP contract, consciousness loop, metabolic state machine as installable package</li>
           <li>Federation protocol between SAGE instances (peer_ask tool is the first bridge)</li>
           <li>Real sensor backends on Jetson (camera, microphone, IMU)</li>
@@ -513,17 +560,9 @@ response = llm.generate(prompt + tool_context)
         <h3>Next</h3>
         <ul>
           <li>Robot hardware integration (motor control, manipulation)</li>
-          <li>Cross-device state migration (save on Thor, resume on Sprout)</li>
           <li>Dynamic plugin discovery and loading</li>
           <li>Bidirectional memory transduction &mdash; memory actively shapes attention during WAKE</li>
-        </ul>
-      </div>
-      <div class="roadmap-tier">
-        <h3>Future</h3>
-        <ul>
-          <li>Online learning during deployment</li>
           <li>Distributed cognition network &mdash; multiple SAGEs sharing experience</li>
-          <li>Cross-modal reasoning (vision + language + motor as unified cognition)</li>
           <li>Full Web4 federation &mdash; SAGE as autonomous citizen in trust networks</li>
         </ul>
       </div>
@@ -563,7 +602,7 @@ response = llm.generate(prompt + tool_context)
         <div class="timeline-marker"></div>
         <div class="timeline-content">
           <h4>Today</h4>
-          <p>A continuous consciousness loop running on edge hardware. 15+ IRP plugins. 5 metabolic states. Trust-weighted attention. Hardware-bound identity. Epistemic memory with SQLite-backed MemoryHub. Sleep-cycle training. Tool use with three-tier model adaptation and multi-turn conversation memory. Raised through 240+ developmental sessions across two tracks.</p>
+          <p>A continuous consciousness loop running on six machines across four hardware families. 15+ IRP plugins. 5 metabolic states. Trust posture shaping behavioral strategy. Hardware-bound identity that transfers across models (Qwen, TinyLlama, Gemma, Phi4). PolicyGate as integrated learning conscience. Epistemic memory with SQLite-backed MemoryHub. Tool use with three-tier model adaptation. 370+ developmental sessions across 12 instances. Identity portability demonstrated between Jetson and x86.</p>
         </div>
       </div>
     </div>
@@ -599,7 +638,7 @@ response = llm.generate(prompt + tool_context)
         <blockquote>&ldquo;Web4 isn&rsquo;t a technology SAGE uses &mdash; it&rsquo;s the ontology SAGE lives in.&rdquo;</blockquote>
         <p>SAGE fractally implements every Web4 concept:</p>
         <ul>
-          <li><strong>LCT</strong> &mdash; hardware-bound identity, witnessed across 240+ sessions</li>
+          <li><strong>LCT</strong> &mdash; hardware-bound identity, witnessed across 370+ sessions</li>
           <li><strong>T3</strong> &mdash; trust tensors for every IRP plugin and every relationship</li>
           <li><strong>ATP/ADP</strong> &mdash; thermodynamic accountability for resource allocation</li>
           <li><strong>MRH</strong> &mdash; experience buffer boundaries, memory context windows</li>

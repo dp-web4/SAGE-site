@@ -579,6 +579,10 @@ code {
   letter-spacing: 0.05em;
 }
 
+.roadmap-tier:first-child {
+  border-color: var(--accent-dim);
+}
+
 .roadmap-tier ul {
   list-style: none;
   margin-left: 0;
