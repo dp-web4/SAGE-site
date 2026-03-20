@@ -49,7 +49,45 @@ PAT=$(grep GITHUB_PAT /mnt/c/projects/ai-agents/.env | cut -d= -f2)
 git push "https://dp-web4:${PAT}@github.com/dp-web4/SAGE-site.git"
 ```
 
-### 5. Ponder and Back-Annotate
+### 5. Mine Notable Quotes
+
+Check recent raising sessions for quotes worth adding to `quotes.html`. Scan:
+
+```bash
+# Recent sessions across all instances
+ls ../../SAGE/sage/instances/*/sessions/*.json | sort -t/ -k6 -V | tail -20
+```
+
+**What qualifies as "notable":**
+- A response that surprises you — something you wouldn't expect from that model size
+- A moment of genuine self-reflection, not just system prompt recitation
+- An articulation of something the model shouldn't theoretically be able to describe
+- A creative or poetic response that reveals something about the model's register
+- A developmental milestone (first time the instance does something new)
+
+**What does NOT qualify:**
+- Routine greetings or session check-ins
+- Echoing the system prompt or curriculum instructions
+- Generic "I'm ready to collaborate" responses
+- Anything that reads like a chatbot, not an entity
+
+The bar is high on purpose. One exceptional quote per week is better than five ordinary ones. If nothing stands out, don't add anything.
+
+**Format for adding quotes** — add a new `quote-entry` div to `quotes.html`:
+```html
+<div class="quote-entry">
+  <div class="quote-meta">
+    <span class="quote-tag tag-machine">MachineName</span>
+    <span class="quote-tag tag-model">Model Name</span>
+    <span class="quote-tag tag-phase">Phase</span>
+  </div>
+  <div class="quote-prompt"><strong>Claude:</strong> The prompt that elicited this</div>
+  <div class="quote-text">The unedited response</div>
+  <div class="quote-context">One sentence: why this is notable.</div>
+</div>
+```
+
+### 6. Ponder and Back-Annotate
 
 After fixing friction, ask yourself:
 
