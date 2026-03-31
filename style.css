@@ -141,6 +141,7 @@ nav {
 .hero-loop {
   margin: 2rem auto;
   max-width: 420px;
+  width: 100%;
 }
 
 .loop-code {
@@ -154,6 +155,8 @@ nav {
   border-radius: 8px;
   padding: 1.5rem 2rem;
   display: block;
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 .loop-code .kw { color: var(--accent); }
