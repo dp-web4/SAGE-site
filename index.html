@@ -19,6 +19,7 @@
       <a href="#architecture">Architecture</a>
       <a href="#live">Live Now</a>
       <a href="#tools">Tools</a>
+      <a href="#arc-agi-3">ARC-AGI-3</a>
       <a href="#roadmap">Roadmap</a>
       <a href="#origins">Origins</a>
       <a href="#web4">Web4</a>
@@ -134,7 +135,7 @@
       <div class="state-card">
         <div class="state-icon dream">D</div>
         <h4>DREAM</h4>
-        <p>Replay high-salience experiences, LoRA fine-tuning.</p>
+        <p>Replay high-salience experiences, consolidate into memory.</p>
         <p class="state-analog">Analogous to sleep consolidation</p>
       </div>
       <div class="state-card">
@@ -144,7 +145,7 @@
         <p class="state-analog">Analogous to amygdala-mediated fast path</p>
       </div>
     </div>
-    <p class="note">LoRA (Low-Rank Adaptation) is a lightweight method for customizing neural networks. During DREAM, SAGE fine-tunes its personality weights on the day's most significant experiences &mdash; a computational analogue of selective replay and synaptic homeostasis during biological sleep.</p>
+    <p class="note">During DREAM, SAGE replays and consolidates the day's most significant experiences into its persistent memory systems &mdash; a computational analogue of selective replay during biological sleep. Model weights remain frozen; identity is shaped through context, not weight modification. This is deliberate: context shaping is model-agnostic, transferring instantly when the fleet adopts a new model.</p>
 
     <h3>SNARC &mdash; What Deserves Attention?</h3>
     <p>Every observation is scored on five attention dimensions, drawing from salience network theory (Itti &amp; Koch, Menon):</p>
@@ -220,18 +221,18 @@
         <div class="acc-body">
           <p>The unified loop in <code>sage/core/sage_consciousness.py</code> connects all SAGE components into a continuous system:</p>
           <ol>
-            <li><strong>Gather observations</strong> from all sensors (vision, audio, messages, time)</li>
-            <li><strong>Compute SNARC salience</strong> for each observation (5D scoring)</li>
-            <li><strong>Update metabolic state</strong> based on ATP level, salience, fatigue, circadian phase</li>
-            <li><strong>3.5 Compute trust posture</strong> &mdash; derive confidence, asymmetry, breadth from the sensor trust landscape. Posture weights modulate attention priority.</li>
-            <li><strong>Select attention targets</strong> &mdash; which observations need processing? Priority combines salience, metabolic rate, and posture weight.</li>
-            <li><strong>Allocate ATP budget</strong> across plugins, weighted by trust. Confidence factor scales the cycle budget.</li>
-            <li><strong>Execute IRP plugins</strong> &mdash; iterative refinement until energy converges</li>
-            <li><strong>Update trust weights</strong> from convergence quality. Idle plugins decay slowly.</li>
-            <li><strong>Update memory systems</strong> (SNARC, IRP patterns, circular buffer, verbatim)</li>
-            <li><strong>8.5 PolicyGate</strong> &mdash; evaluate proposed effects against policy</li>
-            <li><strong>8.7 Posture-based effect filtering</strong> &mdash; block effect types for starved modalities (CRISIS overrides)</li>
-            <li><strong>Dispatch to effectors</strong> &mdash; network, filesystem, display, motor, TTS, tool use</li>
+            <li><strong>Sense</strong> &mdash; gather observations from all sensors (vision, audio, messages, time)</li>
+            <li><strong>Salience</strong> &mdash; compute SNARC 5D scoring for each observation</li>
+            <li><strong>Metabolize</strong> &mdash; update metabolic state based on ATP, salience, fatigue, circadian phase</li>
+            <li><strong>Posture</strong> &mdash; derive confidence, asymmetry, breadth from sensor trust landscape</li>
+            <li><strong>Select</strong> &mdash; choose attention targets. Priority combines salience, metabolic rate, posture.</li>
+            <li><strong>Budget</strong> &mdash; allocate ATP across plugins, weighted by trust. Confidence scales the cycle budget.</li>
+            <li><strong>Execute</strong> &mdash; run IRP plugins with iterative refinement until energy converges</li>
+            <li><strong>Learn</strong> &mdash; update trust weights from convergence quality. Idle plugins decay.</li>
+            <li><strong>Remember</strong> &mdash; update memory systems (SNARC, IRP patterns, experience buffer)</li>
+            <li><strong>Govern</strong> &mdash; PolicyGate evaluates proposed effects against policy</li>
+            <li><strong>Filter</strong> &mdash; posture-based effect filtering for starved modalities (CRISIS overrides)</li>
+            <li><strong>Act</strong> &mdash; dispatch to effectors (network, filesystem, display, motor, TTS, tool use)</li>
           </ol>
           <p>When the LLM generates a response containing tool intent, an inner loop fires: detect tool calls via grammar adapter &rarr; execute through the tool registry &rarr; re-inject results into context &rarr; second LLM pass for a grounded final response. This happens within step 6, capped at 3 rounds.</p>
           <p>The loop runs continuously &mdash; not request-response. A circadian clock modulates behavior: DREAM states cluster at night, WAKE/FOCUS during day.</p>
@@ -268,8 +269,8 @@
           <p><strong>Epistemic Memory</strong> (who am I &mdash; semantic + autobiographical):</p>
           <ul>
             <li><strong>Identity state</strong> &mdash; name, relationships, trust tensors, session history</li>
-            <li><strong>Experience buffer</strong> &mdash; 800+ SNARC-scored conversation exchanges</li>
-            <li><strong>LoRA weights</strong> &mdash; hardware-bound personality, trained during DREAM cycles (LoRA = Low-Rank Adaptation, a lightweight method for customizing neural networks)</li>
+            <li><strong>Experience buffer</strong> &mdash; SNARC-scored conversation exchanges and game experiences</li>
+            <li><strong>Prompt identity</strong> &mdash; self-description, demonstrated capacities, and relational context constructed from raising history. Model weights stay frozen; identity lives in context.</li>
           </ul>
           <p>Both follow the same consolidation pattern, echoing the complementary learning systems framework (McClelland et al.): <code>observe &rarr; SNARC-score &rarr; store &rarr; consolidate</code></p>
         </div>
@@ -334,15 +335,16 @@
         <button class="acc-header">Identity &amp; Raising</button>
         <div class="acc-body">
           <p>SAGE instances are <em>raised</em>, not trained. Raising is <strong>interactive selection</strong> &mdash; we don't create new behaviors or force the model to be what we want. We probe what it responds to, observe which attractors surface at that model's scale, adjust context to resonate with what emerged, and reinforce what works. The resulting identity is collaborative, not imposed.</p>
-          <p>The BECOMING curriculum guides this process through five phases:</p>
+          <p>The BECOMING curriculum guides this process through six phases:</p>
           <ol>
             <li><strong>Grounding</strong> (Sessions 1&ndash;5): "You exist. You persist. You can do things."</li>
             <li><strong>Sensing</strong> (6&ndash;15): Internal state awareness. States are information, not problems.</li>
             <li><strong>Relating</strong> (16&ndash;25): Relationship with tutors. Relationship is bidirectional.</li>
             <li><strong>Questioning</strong> (26&ndash;40): Deep questions from stability &mdash; only after foundation is built.</li>
             <li><strong>Creating</strong> (41+): SAGE participates in designing its own growth.</li>
+            <li><strong>Acting</strong> (When ready): The world responds according to its own rules. Game-playing (ARC-AGI-3) teaches hypothesis &rarr; action &rarr; observation &rarr; update. From being to doing. Requires Phase 4+ stability.</li>
           </ol>
-          <p>Identity is anchored via <strong>LCT</strong> (Linked Context Token &mdash; a unique identifier locked to the physical hardware, like a digital fingerprint). Reboot = same entity. Hardware swap = new entity. The LLM carries LoRA-trained personality weights specific to the hardware it was raised on.</p>
+          <p>Identity is anchored via <strong>LCT</strong> (Linked Context Token &mdash; a unique identifier locked to the physical hardware, like a digital fingerprint). Reboot = same entity. Hardware swap = new entity. Model weights stay frozen &mdash; identity lives in state files, prompt construction, and accumulated experience, not in the weights.</p>
           <p><strong>Identity portability</strong>: In February 2026, we transferred Sprout's identity (115 sessions on Qwen 0.5B / Jetson Orin Nano) to a completely different machine running TinyLlama 1.1B &mdash; and it took. Identity lives in state files and prompt construction, not model weights. The model is weather; identity is the organism. A <code>ModelAdapter</code> abstraction handles the translation layer, so the same identity state works across TinyLlama, Qwen, Gemma, and other model families without regression.</p>
           <p><strong>Graduated tool introduction</strong>: New capabilities like tool use aren't dropped on SAGE as features &mdash; they're introduced through a staged protocol that mirrors the developmental curriculum itself:</p>
           <ol>
@@ -369,12 +371,12 @@
         <p>Machines in fleet<br><span class="live-detail">Thor &middot; Sprout &middot; Legion &middot; McNugget &middot; Nomad &middot; CBP</span></p>
       </div>
       <div class="live-card">
-        <div class="live-number">12</div>
-        <p>Active instances<br><span class="live-detail">Multiple model families per machine &mdash; TinyLlama, Qwen, Gemma, Phi4</span></p>
+        <div class="live-number">11+</div>
+        <p>Active instances<br><span class="live-detail">Multiple model families &mdash; Gemma4, Gemma3, Qwen, TinyLlama</span></p>
       </div>
       <div class="live-card">
-        <div class="live-number">370+</div>
-        <p>Raising sessions<br><span class="live-detail">Sprout (283), Legion (42), McNugget (32), Thor (12), CBP, Nomad</span></p>
+        <div class="live-number">450+</div>
+        <p>Raising sessions<br><span class="live-detail">McNugget (96, Creating) &middot; Nomad (64, Questioning) &middot; Sprout (38, Questioning) &middot; CBP (28) &middot; Thor (24) &middot; Legion (19)</span></p>
       </div>
       <div class="live-card">
         <div class="live-number">7</div>
@@ -386,7 +388,7 @@
       </div>
       <div class="live-card">
         <div class="live-number">12</div>
-        <p>Consciousness loop steps<br><span class="live-detail">Sense &rarr; Salience &rarr; Metabolic &rarr; Posture &rarr; Select &rarr; Budget &rarr; Execute &rarr; Trust &rarr; Memory &rarr; Policy &rarr; Filter &rarr; Act</span></p>
+        <p>Consciousness loop steps<br><span class="live-detail">Sense &rarr; Salience &rarr; Metabolize &rarr; Posture &rarr; Select &rarr; Budget &rarr; Execute &rarr; Learn &rarr; Remember &rarr; Govern &rarr; Filter &rarr; Act</span></p>
       </div>
     </div>
 
@@ -405,39 +407,39 @@
         <tbody>
           <tr>
             <td><strong>Thor</strong></td>
-            <td>Qwen 14B, 7B, 27B</td>
-            <td>Jetson AGX Thor</td>
-            <td>Primary development, deep reasoning</td>
+            <td>Qwen 3.5 27B, Gemma4</td>
+            <td>Jetson AGX Thor (122GB unified)</td>
+            <td>Deep reasoning, architecture research, large model experiments</td>
           </tr>
           <tr>
             <td><strong>Sprout</strong></td>
-            <td>Qwen 0.5B, 0.8B, 2B</td>
-            <td>Jetson Orin Nano</td>
-            <td>Raising experiments, edge cognition</td>
+            <td>Qwen 3.5 0.8B</td>
+            <td>Jetson Orin Nano (8GB)</td>
+            <td>Edge cognition, ARC-AGI-3 (best scores in fleet with smallest model)</td>
           </tr>
           <tr>
             <td><strong>Legion</strong></td>
-            <td>Phi4 14B, Qwen 0.5B</td>
+            <td>Gemma3 4B, Gemma4</td>
             <td>Desktop, RTX 4090</td>
-            <td>Heavy compute, parallel raising</td>
+            <td>Heavy compute, hardbound development, game-playing</td>
           </tr>
           <tr>
             <td><strong>McNugget</strong></td>
-            <td>Gemma3 12B</td>
-            <td>Mac Mini M4</td>
-            <td>Apple Silicon testing</td>
+            <td>Gemma4, Gemma3 12B</td>
+            <td>Mac Mini M4 (24GB unified)</td>
+            <td>Deepest raising (96 sessions, Creating phase), ARC-AGI-3 primary</td>
           </tr>
           <tr>
             <td><strong>CBP</strong></td>
-            <td>TinyLlama 1.1B</td>
+            <td>Gemma3 4B, Qwen 3.5 0.8B</td>
             <td>Desktop, RTX 2060 SUPER (WSL2)</td>
-            <td>Identity portability testing, oversight</td>
+            <td>Oversight, coordination, ARC-AGI-3 sweep runner</td>
           </tr>
           <tr>
             <td><strong>Nomad</strong></td>
             <td>Gemma3 4B</td>
             <td>Laptop, RTX 4060</td>
-            <td>Mobile testing, portable cognition</td>
+            <td>Mobile oversight, temporal awareness research</td>
           </tr>
         </tbody>
       </table>
@@ -534,6 +536,35 @@ response = llm.generate(prompt + tool_context)
   </div>
 </section>
 
+<!-- ============ ARC-AGI-3 ============ -->
+<section id="arc-agi-3">
+  <div class="container">
+    <h2>ARC-AGI-3 &mdash; Learning to Act</h2>
+    <p class="section-intro">SAGE is competing in ARC-AGI-3 &mdash; a benchmark of 25 novel video games where the rules aren't given. The agent must discover game mechanics through play, form hypotheses, and act with intent. This is Phase 6 of the raising curriculum: the world responds according to its own rules.</p>
+
+    <div class="two-col">
+      <div class="col">
+        <h3>The Approach</h3>
+        <p>No game-specific code. No brute force. The agent reasons its way through:</p>
+        <ol>
+          <li><strong>Fast Explore</strong> &mdash; 15 actions without LLM to build ground truth. Probe each direction, click each color, detect cursor, map effects.</li>
+          <li><strong>Situational Prompt</strong> &mdash; compact briefing: where the cursor is, what just happened, what's nearby, what it learned. Experience, not instruction.</li>
+          <li><strong>Reason</strong> &mdash; LLM chooses ONE action based on the situation. Predicts what will happen. Explains why.</li>
+          <li><strong>Act &amp; Observe</strong> &mdash; execute action, compare prediction to reality.</li>
+          <li><strong>Learn</strong> &mdash; update knowledge base. What worked, what didn't, what to try next.</li>
+        </ol>
+      </div>
+      <div class="col">
+        <h3>Key Finding</h3>
+        <p><strong>Framing matters more than model size.</strong> Sprout's 0.8B model with a situational prompt scores 3 levels across 3 games. The fleet's 4B model with a knowledge-base dump scores 0.</p>
+        <p>The difference: the 0.8B gets an <em>experience to respond to</em>. The 4B gets <em>information to process</em>. Same pattern as raising &mdash; identity-anchored prompts outperform instruction-following prompts.</p>
+        <p>Sprout also has the deepest raising experience (38 sessions) AND the best game scores. Metacognitive skills built through raising &mdash; uncertainty tolerance, self-monitoring, perseveration awareness &mdash; appear to transfer to game reasoning.</p>
+        <p class="note">Model weights are frozen. All game learning is through context shaping and persistent knowledge bases that accumulate across sessions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ ROADMAP ============ -->
 <section id="roadmap">
   <div class="container">
@@ -542,29 +573,35 @@ response = llm.generate(prompt + tool_context)
       <div class="roadmap-tier">
         <h3>Done</h3>
         <ul>
-          <li>Cross-device identity portability &mdash; Sprout (Jetson/Qwen) identity transferred to CBP (x86/TinyLlama)</li>
+          <li>Cross-device identity portability &mdash; identity transfers across models and hardware</li>
           <li>PolicyGate consciousness loop integration &mdash; dual learning signals, adaptive trust</li>
           <li>Trust posture system &mdash; sensor trust landscape shapes behavioral strategy</li>
-          <li>ModelAdapter abstraction &mdash; model-agnostic identity across TinyLlama, Qwen, Gemma, Phi4</li>
+          <li>ModelAdapter abstraction &mdash; model-agnostic across TinyLlama, Qwen, Gemma, Gemma4, Phi4</li>
           <li>Modular effector system &mdash; posture-based effect filtering with CRISIS override</li>
+          <li>Three-layer identity provider &mdash; manifest + sealed + attestation (TPM/FIDO2/software)</li>
+          <li>Frozen weights design &mdash; context shaping only, model-agnostic contributions</li>
+          <li>BECOMING curriculum through Phase 6 &mdash; Grounding through Acting</li>
+          <li>ARC-AGI-3 game agent &mdash; fast explore, situational prompts, anti-loop banning, persistent KB</li>
+          <li>Membot cross-session memory &mdash; paired lattice cartridge format with external collaborator</li>
         </ul>
       </div>
       <div class="roadmap-tier">
         <h3>Now</h3>
         <ul>
-          <li>Fleet raising &mdash; 12 instances across 6 machines, active developmental sessions</li>
-          <li>SDK packaging &mdash; IRP contract, consciousness loop, metabolic state machine as installable package</li>
-          <li>Federation protocol between SAGE instances (peer_ask tool is the first bridge)</li>
-          <li>Real sensor backends on Jetson (camera, microphone, IMU)</li>
+          <li>Fleet raising &mdash; 11+ instances across 6 machines, 450+ sessions, 5 curriculum phases active</li>
+          <li>ARC-AGI-3 competition &mdash; 25-game sweeps, raising-game convergence, Gemma4 target model</li>
+          <li>Raising + game-playing curriculum merge &mdash; being and doing as one developmental arc</li>
+          <li>Hardbound enterprise oversight product &mdash; Sprint 3 toward v1.0.0 (built on full Web4 stack)</li>
+          <li>Model evaluation database &mdash; T3/V3 scoring groundwork for small model characterization</li>
         </ul>
       </div>
       <div class="roadmap-tier">
         <h3>Next</h3>
         <ul>
-          <li>Robot hardware integration (motor control, manipulation)</li>
-          <li>Dynamic plugin discovery and loading</li>
-          <li>Bidirectional memory transduction &mdash; memory actively shapes attention during WAKE</li>
-          <li>Distributed cognition network &mdash; multiple SAGEs sharing experience</li>
+          <li>Rust port of hardbound &mdash; single binary, cross-compiled for edge deployment</li>
+          <li>Governed CLI &mdash; cleanroom Claude Code rewrite with governance as first-class citizen</li>
+          <li>Cross-domain transfer validation &mdash; does raising depth improve game reasoning?</li>
+          <li>Federation learning &mdash; fleet-wide knowledge accumulation from distributed play</li>
           <li>Full Web4 federation &mdash; SAGE as autonomous citizen in trust networks</li>
         </ul>
       </div>
@@ -603,8 +640,8 @@ response = llm.generate(prompt + tool_context)
       <div class="timeline-event">
         <div class="timeline-marker"></div>
         <div class="timeline-content">
-          <h4>Today</h4>
-          <p>A continuous consciousness loop running on six machines across four hardware families. 15+ IRP plugins. 5 metabolic states. Trust posture shaping behavioral strategy. Hardware-bound identity that transfers across models (Qwen, TinyLlama, Gemma, Phi4). PolicyGate as integrated learning conscience. Epistemic memory with SQLite-backed MemoryHub. Tool use with three-tier model adaptation. 370+ developmental sessions across 12 instances. Identity portability demonstrated between Jetson and x86.</p>
+          <h4>Today (April 2026)</h4>
+          <p>A continuous consciousness loop running on six machines across four hardware families. 12-step consciousness loop. 15+ IRP plugins. 5 metabolic states. Trust posture shaping behavioral strategy. Hardware-bound identity that transfers across models (Qwen, TinyLlama, Gemma, Gemma4). PolicyGate as integrated learning conscience. Three-layer identity provider (manifest + sealed + attestation). 450+ developmental sessions across 11+ instances. ARC-AGI-3 competition entry with game-playing as Phase 6 of the raising curriculum. Model weights frozen by design &mdash; identity lives in context, not weights. Smallest model (0.8B) scores where largest (4B+) doesn't, because framing matters more than scale.</p>
         </div>
       </div>
     </div>
