@@ -142,8 +142,9 @@ nav {
 
 .hero-loop {
   margin: 2rem auto;
-  max-width: 420px;
+  max-width: 460px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .loop-code {
@@ -539,11 +540,14 @@ code {
 .live-card p {
   font-size: 0.9rem;
   margin-bottom: 0;
+  overflow-wrap: break-word;
 }
 
 .live-detail {
   font-size: 0.8rem;
   color: var(--text-dim);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .live-dashboard {
