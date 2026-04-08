@@ -559,11 +559,11 @@ response = llm.generate(prompt + tool_context)
         </ol>
       </div>
       <div class="col">
-        <h3>Key Finding</h3>
-        <p><strong>Framing matters more than model size.</strong> Sprout's 0.8B model with a situational prompt scores 3 levels across 3 games. The fleet's 4B model with a knowledge-base dump scores 0.</p>
-        <p>The difference: the 0.8B gets an <em>experience to respond to</em>. The 4B gets <em>information to process</em>. Same pattern as raising &mdash; identity-anchored prompts outperform instruction-following prompts.</p>
-        <p>Sprout also has the deepest raising experience (38 sessions) AND the best game scores. Metacognitive skills built through raising &mdash; uncertainty tolerance, self-monitoring, perseveration awareness &mdash; appear to transfer to game reasoning.</p>
-        <p class="note">Model weights are frozen. All game learning is through context shaping and persistent knowledge bases that accumulate across sessions.</p>
+        <h3>Results: 5/25 Games Solved</h3>
+        <p><strong>The fleet has fully solved 5 of 25 games</strong> (sb26, cd82, vc33, lp85, ft09) across 3 machines. Best efficiency: 361% of human baseline on lp85. McNugget solved two games autonomously with Gemma 4 overnight.</p>
+        <p><strong>The fractal insight:</strong> gameplay taught an action classification framework &mdash; <em>observation</em> (free), <em>reversible</em> (cheap), <em>consequential</em> (verify first) &mdash; that maps identically to the raising curriculum, trust assessment, and enterprise governance. Games aren't just a benchmark; they're a curriculum that teaches the same cognitive patterns needed for trustworthy agency at every scale.</p>
+        <p><strong>Framing matters more than model size.</strong> Context-shaped prompts with accumulated fleet learning outperform raw model capability. Identity-anchored play outperforms instruction-following.</p>
+        <p class="note">Model weights are frozen. All learning is through context shaping and persistent knowledge bases that accumulate across sessions and across machines.</p>
       </div>
     </div>
   </div>
