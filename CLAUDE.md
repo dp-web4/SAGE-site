@@ -4,7 +4,7 @@ Public-facing site explaining what SAGE is, why it exists, how the architecture 
 
 **Live site**: https://dp-web4.github.io/SAGE-site/
 **Repo**: https://github.com/dp-web4/SAGE-site
-**Research core**: https://github.com/dp-web4/HRM
+**Research core**: https://github.com/dp-web4/SAGE
 
 ## Web4 Ontological Context
 
@@ -29,14 +29,14 @@ Visitor (05:00)  →  friction logs  →  Maintainer (06:00)
                                         │    │
                                         │    │  back-annotate
                                         │    ↓
-                                        │  HRM repo
+                                        │  SAGE repo
                                         │  (research core)
                                         └──────────────────
 ```
 
 The site is a **public dialogue** — visitor friction informs both site improvements and the research core.
 Corrections, clearer framings, and new questions discovered through the feedback loop
-are back-annotated to the HRM repo as incremental advancement.
+are back-annotated to the SAGE repo as incremental advancement.
 
 ### Visitor Track (`visitor/`)
 - **Schedule**: 05:00 daily
@@ -46,9 +46,9 @@ are back-annotated to the HRM repo as incremental advancement.
 
 ### Maintainer Track (`maintainer/`)
 - **Schedule**: 06:00 daily
-- **Role**: Consumes visitor feedback, implements site fixes, seeds questions, **back-annotates HRM repo**
+- **Role**: Consumes visitor feedback, implements site fixes, seeds questions, **back-annotates SAGE repo**
 - **Input**: `visitor/logs/`
-- **Output**: Site code changes (committed + pushed), back-annotations to HRM repo
+- **Output**: Site code changes (committed + pushed), back-annotations to SAGE repo
 
 ## Key Files
 
@@ -76,7 +76,7 @@ SAGE is a real system running on real hardware. The site should:
 - **Be honest** — SAGE is experimental, in active development, not a product
 - **Explain the why** — not just features, but the reasoning behind architectural choices
 - **Respect the visitor** — don't assume they know what IRP or SNARC means. Define terms.
-- **Link to source** — every claim should trace to code or docs in the HRM repo
+- **Link to source** — every claim should trace to code or docs in the SAGE repo
 
 ## Conventions
 
@@ -84,4 +84,4 @@ SAGE is a real system running on real hardware. The site should:
 - SAGE is a **cognition kernel**, not a chatbot
 - IRP is a **universal contract**, not a framework
 - Avoid "production ready" — we are in active R&D
-- The HRM repo is the source of truth for architecture details
+- The SAGE repo is the source of truth for architecture details

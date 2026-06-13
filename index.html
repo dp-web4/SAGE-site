@@ -57,7 +57,7 @@
       </div>
       <div class="hero-cta">
         <a href="#why" class="btn">Learn More</a>
-        <a href="https://github.com/dp-web4/HRM" class="btn btn-ghost" target="_blank">GitHub</a>
+        <a href="https://github.com/dp-web4/SAGE" class="btn btn-ghost" target="_blank">GitHub</a>
       </div>
     </div>
   </div>
@@ -376,11 +376,11 @@
       </div>
       <div class="live-card">
         <div class="live-number">11+</div>
-        <p>Active instances<br><span class="live-detail">Multiple model families &mdash; Gemma4, Gemma3, Qwen, TinyLlama</span></p>
+        <p>Active instances<br><span class="live-detail">Multiple model families &mdash; Gemma4, Gemma3, Qwen</span></p>
       </div>
       <div class="live-card">
-        <div class="live-number">450+</div>
-        <p>Raising sessions<br><span class="live-detail">McNugget (96, Creating) &middot; Nomad (64, Questioning) &middot; Sprout (38, Questioning) &middot; CBP (28) &middot; Thor (24) &middot; Legion (19)</span></p>
+        <div class="live-number">1,400+</div>
+        <p>Raising sessions<br><span class="live-detail">Sprout (316, Creating) &middot; McNugget (218, Creating) &middot; Legion (197, Creating) &middot; Thor (151, Creating) &middot; CBP (32, Questioning) &middot; Nomad (8, Sensing)</span></p>
       </div>
       <div class="live-card">
         <div class="live-number">7</div>
@@ -532,7 +532,7 @@ response = llm.generate(prompt + tool_context)
         <tbody>
           <tr><td>Gemma3 4B</td><td>T2</td><td>5/5</td><td>Clean XML tool calls on every probe</td></tr>
           <tr><td>Gemma3 12B</td><td>T2</td><td>TBD</td><td>Expected strong T2, same family as 4B</td></tr>
-          <tr><td>Qwen 2.5 0.5B</td><td>T3</td><td>TBD</td><td>Next: silent stage in raising sessions</td></tr>
+          <tr><td>Qwen 3.5 0.8B</td><td>T3</td><td>TBD</td><td>Primary Sprout raising model</td></tr>
           <tr><td>Phi4 14B</td><td>T2</td><td>TBD</td><td>Expected strong T2, possibly T1</td></tr>
         </tbody>
       </table>
@@ -637,15 +637,15 @@ response = llm.generate(prompt + tool_context)
         <div class="timeline-marker"></div>
         <div class="timeline-content">
           <h4>SAGE Is Born</h4>
-          <p><strong>Situation-Aware Governance Engine.</strong> Not a model that solves puzzles, but a kernel that orchestrates cognition. The repo kept its name (HRM) but the mission transformed: from hierarchical reasoning to awareness and sensor-trust management.</p>
-          <p><a href="https://github.com/dp-web4/HRM" target="_blank" class="link">dp-web4/HRM on GitHub &rarr;</a></p>
+          <p><strong>Situation-Aware Governance Engine.</strong> Not a model that solves puzzles, but a kernel that orchestrates cognition. The project evolved from hierarchical reasoning into awareness and sensor-trust management, and the repo was renamed from HRM to SAGE.</p>
+          <p><a href="https://github.com/dp-web4/SAGE" target="_blank" class="link">dp-web4/SAGE on GitHub &rarr;</a></p>
         </div>
       </div>
       <div class="timeline-event">
         <div class="timeline-marker"></div>
         <div class="timeline-content">
-          <h4>Today (April 2026)</h4>
-          <p>A continuous consciousness loop running on six machines across four hardware families. 12-step consciousness loop. 15+ IRP plugins. 5 metabolic states. Trust posture shaping behavioral strategy. Hardware-bound identity that transfers across models (Qwen, TinyLlama, Gemma, Gemma4). PolicyGate as integrated learning conscience. Three-layer identity provider (manifest + sealed + attestation). 450+ developmental sessions across 11+ instances. ARC-AGI-3 competition entry with game-playing as Phase 6 of the raising curriculum. Model weights frozen by design &mdash; identity lives in context, not weights. Smallest model (0.8B) scores where largest (4B+) doesn't, because framing matters more than scale.</p>
+          <h4>Today (June 2026)</h4>
+          <p>A continuous consciousness loop running on six machines across four hardware families. 12-step consciousness loop. 15+ IRP plugins. 5 metabolic states. Trust posture shaping behavioral strategy. Hardware-bound identity that transfers across models (Qwen, Gemma, Gemma4). PolicyGate as integrated learning conscience. Three-layer identity provider (manifest + sealed + attestation). 1,400+ developmental sessions across 11+ instances. ARC-AGI-3 competition entry with game-playing as Phase 6 of the raising curriculum. Web4 Hub running as a live society with fleet machines registered as members. Model weights frozen by design &mdash; identity lives in context, not weights. Smallest model (0.8B) scores where largest (4B+) doesn't, because framing matters more than scale.</p>
         </div>
       </div>
     </div>
@@ -681,7 +681,7 @@ response = llm.generate(prompt + tool_context)
         <blockquote>&ldquo;Web4 isn&rsquo;t a technology SAGE uses &mdash; it&rsquo;s the ontology SAGE lives in.&rdquo;</blockquote>
         <p>SAGE fractally implements every Web4 concept:</p>
         <ul>
-          <li><strong>LCT</strong> &mdash; hardware-bound identity, witnessed across 370+ sessions</li>
+          <li><strong>LCT</strong> &mdash; hardware-bound identity, witnessed across 1,400+ sessions</li>
           <li><strong>T3</strong> &mdash; trust tensors for every IRP plugin and every relationship</li>
           <li><strong>ATP/ADP</strong> &mdash; thermodynamic accountability for resource allocation</li>
           <li><strong>MRH</strong> &mdash; experience buffer boundaries, memory context windows</li>
@@ -703,21 +703,21 @@ response = llm.generate(prompt + tool_context)
     <div class="start-steps">
       <div class="start-step">
         <h4>1. Clone the repo</h4>
-        <pre class="code-block">git clone https://github.com/dp-web4/HRM.git
-cd HRM</pre>
+        <pre class="code-block">git clone https://github.com/dp-web4/SAGE.git
+cd SAGE</pre>
       </div>
       <div class="start-step">
         <h4>2. Install Ollama + a model</h4>
         <pre class="code-block">curl -fsSL https://ollama.com/install.sh | sh
-ollama pull qwen2.5:0.5b</pre>
+ollama pull gemma3:4b</pre>
       </div>
       <div class="start-step">
-        <h4>3. Run SAGE</h4>
-        <pre class="code-block">pip install -r requirements.txt
-python -m sage.gateway.sage_daemon</pre>
+        <h4>3. Build &amp; run the daemon</h4>
+        <pre class="code-block">cd sage-rs && cargo build --release
+SAGE_MACHINE=mybox SAGE_MODEL=gemma3:4b ./target/release/sage-daemon</pre>
       </div>
     </div>
-    <p class="note">SAGE is R&amp;D software, not a packaged product. Expect rough edges. SDK packaging is on the <a href="#roadmap" class="link">roadmap</a>. Questions and contributions welcome on <a href="https://github.com/dp-web4/HRM" target="_blank" class="link">GitHub</a>.</p>
+    <p class="note">SAGE is R&amp;D software, not a packaged product. Expect rough edges. SDK packaging is on the <a href="#roadmap" class="link">roadmap</a>. Questions and contributions welcome on <a href="https://github.com/dp-web4/SAGE" target="_blank" class="link">GitHub</a>.</p>
   </div>
 </section>
 
@@ -726,7 +726,7 @@ python -m sage.gateway.sage_daemon</pre>
   <div class="container">
     <div class="footer-inner">
       <div class="footer-links">
-        <a href="https://github.com/dp-web4/HRM" target="_blank">HRM repo</a>
+        <a href="https://github.com/dp-web4/SAGE" target="_blank">SAGE repo</a>
         <a href="https://github.com/dp-web4/web4" target="_blank">Web4 repo</a>
         <a href="https://github.com/dp-web4" target="_blank">dp-web4</a>
       </div>
