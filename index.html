@@ -372,16 +372,16 @@
     <h2>What's Live Now</h2>
     <div class="live-grid">
       <div class="live-card">
-        <div class="live-number">6</div>
-        <p>Machines in fleet<br><span class="live-detail">Thor &middot; Sprout &middot; Legion &middot; McNugget &middot; Nomad &middot; CBP</span></p>
+        <div class="live-number">7</div>
+        <p>Machines in fleet<br><span class="live-detail">Thor &middot; Sprout &middot; Legion &middot; McNugget &middot; Nomad &middot; CBP &middot; HUB</span></p>
       </div>
       <div class="live-card">
         <div class="live-number">11+</div>
-        <p>Active instances<br><span class="live-detail">Multiple model families &mdash; Gemma4, Gemma3, Qwen</span></p>
+        <p>Active instances<br><span class="live-detail">Multiple model families &mdash; Gemma4, Gemma3, Qwen, and Granite (a Mamba/transformer hybrid)</span></p>
       </div>
       <div class="live-card">
         <div class="live-number">1,400+</div>
-        <p>Raising sessions<br><span class="live-detail">Sprout (316, Creating) &middot; McNugget (218, Creating) &middot; Legion (197, Creating) &middot; Thor (151, Creating) &middot; CBP (32, Questioning) &middot; Nomad (8, Sensing)</span></p>
+        <p>Raising sessions<br><span class="live-detail">Sprout (316, Creating) &middot; McNugget (218, Creating) &middot; Legion (197, Creating) &middot; Thor (151, Creating) &middot; CBP (32, Questioning) &middot; Nomad (8, Sensing) &middot; HUB (2, Grounding)</span></p>
       </div>
       <div class="live-card">
         <div class="live-number">7</div>
@@ -404,7 +404,7 @@
     </div>
 
     <h3>Hardware</h3>
-    <p>SAGE runs on commodity hardware. Six machines, multiple model families, identity portable across all of them:</p>
+    <p>SAGE runs on commodity hardware. Seven machines &mdash; NVIDIA, Apple, and AMD &mdash; multiple model families, identity portable across all of them:</p>
     <div class="hw-table-wrap">
       <table class="hw-table">
         <thead>
@@ -451,6 +451,12 @@
             <td>Gemma4 e2b</td>
             <td>Laptop, RTX 4060 8GB</td>
             <td>ARC-AGI-3 game-domain priors, mobile experimentation</td>
+          </tr>
+          <tr>
+            <td><strong>HUB</strong></td>
+            <td>Granite 4.0-H-Tiny (Mamba/transformer hybrid)</td>
+            <td>AMD Radeon Pro W5500 8GB (WSL2, Vulkan)</td>
+            <td>Biodiversity node &mdash; the fleet's only non-NVIDIA GPU and only hybrid-architecture model; also the Web4 community-hub host</td>
           </tr>
         </tbody>
       </table>
