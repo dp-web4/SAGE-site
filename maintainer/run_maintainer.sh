@@ -71,9 +71,10 @@ cd "$PROJECT_DIR"
 git add maintainer/logs/ index.html style.css script.js 2>/dev/null || true
 if ! git diff --cached --quiet 2>/dev/null; then
     git commit -m "maintainer: session $DATE" 2>/dev/null || true
-    PAT=$(grep GITHUB_PAT /mnt/c/projects/ai-agents/.env 2>/dev/null | cut -d= -f2)
-    if [ -n "$PAT" ]; then
-        git push "https://dp-web4:${PAT}@github.com/dp-web4/SAGE-site.git" 2>/dev/null || true
+    if git push origin HEAD; then
+        echo "pushed $(git rev-parse --short HEAD)"
+    else
+        echo "ERROR: git push failed — check SSH key is loaded (ssh-add -l)" >&2
     fi
     gitnexus_reindex "$PROJECT_DIR" 2>>"$LOG_FILE" || true
 fi
