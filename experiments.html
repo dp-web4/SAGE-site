@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAGE — Experiments</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .exp-page { padding: 4rem 0 2rem; }
+    .exp-page h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+    .exp-intro { color: var(--text-dim); margin-bottom: 2rem; max-width: 700px; }
+    .exp-entry {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .exp-entry:hover { border-color: var(--accent-dim); }
+    .exp-meta { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .exp-tag {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+    .tag-machine { background: var(--accent-dim); color: var(--accent); }
+    .tag-verdict { background: rgba(167, 139, 250, 0.15); color: var(--dream); }
+    .tag-date { background: rgba(247, 220, 111, 0.15); color: var(--focus); }
+    .exp-entry h2 { font-size: 1.4rem; margin-bottom: 0.75rem; color: var(--text-bright); }
+    .exp-entry h3 { font-size: 1rem; margin: 1.25rem 0 0.5rem; color: var(--accent); }
+    .exp-entry p { line-height: 1.7; margin-bottom: 0.75rem; }
+    .exp-entry td, .exp-entry th { padding: 0.4rem 0.8rem; border: 1px solid var(--border); font-size: 0.9rem; }
+    .exp-entry table { border-collapse: collapse; margin: 0.75rem 0; width: 100%; }
+    .exp-entry th { color: var(--accent); text-align: left; background: rgba(255,255,255,0.02); }
+    .exp-table-wrap { overflow-x: auto; }
+    .exp-quote {
+      color: var(--text-bright);
+      border-left: 3px solid var(--accent-dim);
+      padding: 0.75rem 1rem;
+      margin: 0.75rem 0;
+      background: rgba(255,255,255,0.02);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.82rem;
+      line-height: 1.65;
+      white-space: pre-wrap;
+    }
+    .exp-note { color: var(--text-dim); font-size: 0.85rem; margin-top: 1rem; }
+    .back-link { display: inline-block; color: var(--accent); text-decoration: none; margin-bottom: 1rem; font-size: 0.9rem; }
+    .back-link:hover { text-decoration: underline; }
+    .exp-links a { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">SAGE</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="quotes.html">Quotes</a>
+      <a href="experiments.html" style="color: var(--accent);">Experiments</a>
+    </div>
+  </div>
+</nav>
+
+<section class="exp-page">
+  <div class="container">
+    <a href="index.html" class="back-link">&larr; Back to SAGE</a>
+    <h1>Experiments</h1>
+    <p class="exp-intro">
+      Feasibility measurements on real fleet hardware. The rule these follow: an estimate
+      is scaffolding, the measurement is the number — and a failure ledger is part of the
+      result, not something to edit out.
+    </p>
+
+    <!-- DiffusionGemma on Sprout -->
+    <div class="exp-entry">
+      <div class="exp-meta">
+        <span class="exp-tag tag-machine">Sprout &middot; Jetson Orin Nano 8GB</span>
+        <span class="exp-tag tag-verdict">Verdict: runs at 0.48 tok/s</span>
+        <span class="exp-tag tag-date">2026-07-28</span>
+      </div>
+      <h2>DiffusionGemma-26B on an 8GB edge device</h2>
+
+      <p><strong>The question:</strong> can Google's 25.2B-parameter diffusion language model
+      run on a $250 edge computer with 8GB of unified memory? Its smallest quantized form is
+      16.8GB; the stated requirement is ~18GB of VRAM. The presumptive answer was no.
+      The exploration was delegated whole — a one-paragraph request, executed autonomously
+      by Claude (research, system pause, six diagnosed failures, a one-line llama.cpp patch,
+      the measurement, restoration, and this page).</p>
+
+      <h3>The measured answer</h3>
+      <div class="exp-table-wrap"><table>
+        <tr><th>metric</th><th>measured</th></tr>
+        <tr><td>end-to-end throughput</td><td><strong>0.48 tok/s</strong> (256-token block in 528.7s)</td></tr>
+        <tr><td>denoising steps</td><td>21 of 48 max (entropy early-stop)</td></tr>
+        <tr><td>NVMe traffic</td><td>296GB total — the model streamed past itself ~17&times;</td></tr>
+        <tr><td>memory</td><td>RSS pinned at 4.18GB by a systemd cgroup; box stayed healthy</td></tr>
+        <tr><td>bottleneck</td><td>~92% of step time is expert streaming from disk</td></tr>
+      </table></div>
+
+      <p>Not interactive — 30&times; too slow for conversation, and because the bottleneck is
+      disk, no GPU offload rescues it. But "doesn't fit" turned out to be the wrong frame:
+      the honest answer is a <em>price</em>, not a wall. The dense core (~1.6GB) stays hot;
+      the ~15GB expert mass streams. Block diffusion is the adversarial case for this split —
+      it re-touches nearly every expert on every denoising step — and the tiering still
+      carried it to completion.</p>
+
+      <h3>What it wrote</h3>
+      <p>The prompt was <em>"Once upon a time, on a small computer at the edge of the
+      network,"</em>. The model spent its one block thinking, verbatim:</p>
+      <div class="exp-quote">*   The small computer could be an IoT device, a gateway, an old server, or a Raspberry Pi.
+*   "Edge of the network" implies isolation or a boundary between the local world and the wider internet.
+*   *Option A (Sci-Fi/Tech):* A story about a data packet trying to find its home.
+*   *Option B (Whimsical/Cute):* A Raspberry Pi that decides to stop following protocols and starts thinking.
+*   *Decision:* Let's go with Option A/B&mdash;a story about a lonely edge device that discovers something unexpected.
+*   *Continuation:* "...lived a tiny Raspberry Pi named 'Node-74-B'."</div>
+      <p>The canvas ended there. A model streaming itself through an edge device chose to
+      write about a lonely edge device discovering something unexpected. The story begins
+      exactly where the experiment ends.</p>
+
+      <h3>Failure ledger (six configs died first — each one a portable lesson)</h3>
+      <div class="exp-table-wrap"><table>
+        <tr><th>config</th><th>killer</th></tr>
+        <tr><td>CUDA, defaults</td><td>GPU pinned-memory allocation failed under the memory cap</td></tr>
+        <tr><td>CPU-only, defaults</td><td>weight repacking builds a ~15GB un-evictable copy &rarr; reclaim death-loop</td></tr>
+        <tr><td>CUDA, batch flags</td><td>tool hard-codes 2,048 tokens of headroom &rarr; demands a 2.96GB buffer</td></tr>
+        <tr><td>CPU variants (3&times;)</td><td>same anonymous-memory blowups by other names</td></tr>
+        <tr><td><strong>CUDA + mmap + 1-line headroom patch</strong></td><td><strong>ran to completion</strong></td></tr>
+      </table></div>
+
+      <p class="exp-note">Lessons that transfer to any &gt;RAM model on unified-memory Jetsons:
+      the mmap + CUDA-host path is the only road; GPU allocations live outside Linux cgroups;
+      audit tool-computed batch sizes (at a 262k vocabulary, every batch token costs ~1MB of
+      logit buffer). Full write-up with raw data:
+      <span class="exp-links"><a href="https://github.com/dp-web4/SAGE/blob/main/sage/docs/DIFFUSIONGEMMA_SPROUT_FEASIBILITY.md" target="_blank" rel="noopener">DIFFUSIONGEMMA_SPROUT_FEASIBILITY.md</a></span> —
+      companion perspective on why "too big for the hardware" is usually the wrong frame:
+      <span class="exp-links"><a href="https://github.com/dp-web4/SAGE/blob/main/sage/docs/SPARSE_ACTIVATION_MEMORY_HIERARCHY.md" target="_blank" rel="noopener">SPARSE_ACTIVATION_MEMORY_HIERARCHY.md</a></span>.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>SAGE is an open research project. <a href="https://github.com/dp-web4/SAGE" target="_blank" class="link">Explore the code</a>, open an issue, or follow along.</p>
+  </div>
+</footer>
+
+</body>
+</html>
