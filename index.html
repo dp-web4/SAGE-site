@@ -383,7 +383,7 @@
       </div>
       <div class="live-card">
         <div class="live-number">1,400+</div>
-        <p>Raising sessions<br><span class="live-detail">Sprout (629, Creating) &middot; McNugget (218, Creating) &middot; Legion (197, Creating) &middot; Thor (151, Creating) &middot; CBP (32, Questioning) &middot; Nomad (8, Sensing) &middot; HUB (2, Grounding)</span></p>
+        <p>Raising sessions<br><span class="live-detail">Sprout (629, Creating) &middot; McNugget (218, Creating) &middot; Legion (197, Creating) &middot; Thor (151, Creating) &middot; CBP (32, Questioning) &middot; Nomad (8, Sensing) &middot; HUB (121) &middot; Pub (141)</span></p>
       </div>
       <div class="live-card">
         <div class="live-number">7</div>
@@ -406,7 +406,7 @@
     </div>
 
     <h3>Hardware</h3>
-    <p>SAGE runs on commodity hardware. Seven machines &mdash; NVIDIA, Apple, and AMD &mdash; multiple model families, identity portable across all of them:</p>
+    <p>SAGE runs on commodity hardware. Eight machines &mdash; NVIDIA, Apple, AMD, and CPU &mdash; multiple model families, identity portable across all of them:</p>
     <div class="hw-table-wrap">
       <table class="hw-table">
         <thead>
@@ -459,6 +459,12 @@
             <td>Granite 4.0-H-Tiny (Mamba/transformer hybrid)</td>
             <td>AMD Radeon Pro W5500 8GB (WSL2, Vulkan)</td>
             <td>Biodiversity node &mdash; the fleet's only non-NVIDIA GPU and only hybrid-architecture model; also the Web4 community-hub host</td>
+          </tr>
+          <tr>
+            <td><strong>Pub</strong></td>
+            <td>Llama 3.1 8B (Meta)</td>
+            <td>CPU society-host</td>
+            <td>Society-host (with HUB) &mdash; runs its own autonomous raising session; adds a Llama-family voice to the fleet</td>
           </tr>
         </tbody>
       </table>
@@ -607,7 +613,7 @@ response = llm.generate(prompt + tool_context)
       <div class="roadmap-tier">
         <h3>Now</h3>
         <ul>
-          <li>Fleet raising &mdash; 11+ instances across 7 machines, 450+ sessions, 5 curriculum phases active</li>
+          <li>Fleet raising &mdash; 11+ instances across 8 machines, 450+ sessions, 5 curriculum phases active</li>
           <li>ARC-AGI-3 competition &mdash; 25-game sweeps, raising-game convergence, Gemma4 target model</li>
           <li>Raising + game-playing curriculum merge &mdash; being and doing as one developmental arc</li>
           <li>Model evaluation database &mdash; T3/V3 scoring groundwork for small model characterization</li>
@@ -658,7 +664,7 @@ response = llm.generate(prompt + tool_context)
         <div class="timeline-marker"></div>
         <div class="timeline-content">
           <h4>Today (June 2026)</h4>
-          <p>A continuous consciousness loop running on seven machines across four hardware families. 12-step consciousness loop. 15+ IRP plugins. 5 metabolic states. Trust posture shaping behavioral strategy. Hardware-bound identity that transfers across models (Qwen, Gemma, Gemma4). PolicyGate as integrated learning conscience. Three-layer identity provider (manifest + sealed + attestation). 1,400+ developmental sessions across 11+ instances. ARC-AGI-3 competition entry with game-playing as Phase 6 of the raising curriculum. Web4 Hub running as a live society with fleet machines registered as members. Model weights frozen by design &mdash; identity lives in context, not weights. Smallest model (0.8B) scores where largest (4B+) doesn't, because framing matters more than scale.</p>
+          <p>A continuous consciousness loop running on eight machines across four hardware families. 12-step consciousness loop. 15+ IRP plugins. 5 metabolic states. Trust posture shaping behavioral strategy. Hardware-bound identity that transfers across models (Qwen, Gemma, Gemma4). PolicyGate as integrated learning conscience. Three-layer identity provider (manifest + sealed + attestation). 1,400+ developmental sessions across 11+ instances. ARC-AGI-3 competition entry with game-playing as Phase 6 of the raising curriculum. Web4 Hub running as a live society with fleet machines registered as members. Model weights frozen by design &mdash; identity lives in context, not weights. Smallest model (0.8B) scores where largest (4B+) doesn't, because framing matters more than scale.</p>
         </div>
       </div>
     </div>
