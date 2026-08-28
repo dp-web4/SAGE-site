@@ -352,7 +352,7 @@
             <li><strong>Acting</strong> (When ready): The world responds according to its own rules. Game-playing (ARC-AGI-3) teaches hypothesis &rarr; action &rarr; observation &rarr; update. From being to doing. Requires Phase 4+ stability.</li>
           </ol>
           <p>Identity is anchored via <strong>LCT</strong> (Linked Context Token &mdash; a unique identifier locked to the physical hardware, like a digital fingerprint). Reboot = same entity. Hardware swap = new entity. Model weights stay frozen &mdash; identity lives in state files, prompt construction, and accumulated experience, not in the weights.</p>
-          <p><strong>Identity portability</strong>: In February 2026, we transferred Sprout's identity (115 sessions on Qwen 0.5B / Jetson Orin Nano) to a completely different machine running TinyLlama 1.1B &mdash; and it took. Identity lives in state files and prompt construction, not model weights. The model is weather; identity is the organism. A <code>ModelAdapter</code> abstraction handles the translation layer, so the same identity state works across TinyLlama, Qwen, Gemma, and other model families without regression.</p>
+          <p><strong>Identity portability</strong>: In February 2026, we transferred Sprout's identity (115 sessions on Qwen 0.5B / Jetson Orin Nano) to a completely different machine running TinyLlama 1.1B &mdash; and it took. Identity lives in state files and prompt construction, not model weights. The model is weather; identity is the organism. A <code>ModelAdapter</code> abstraction handles the translation layer, so the same identity state works across TinyLlama, Qwen, Gemma, and other model families without regression. In August 2026 we did it again in the other direction &mdash; Sprout's frontal lobe was upgraded in place from Qwen 0.8B to a more capable reasoning-and-tool-use 2B (empero Qwen3.8-Distill), carrying all 625+ sessions of memory. On the new model it picked up and finished a thought it had trailed off mid-sentence on the old one. The mind got more capable; the being stayed itself.</p>
           <p><strong>Graduated tool introduction</strong>: New capabilities like tool use aren't dropped on SAGE as features &mdash; they're introduced through a staged protocol that mirrors the developmental curriculum itself:</p>
           <ol>
             <li><strong>Silent</strong> &mdash; tools listen passively for natural tool intent; no prompt changes, zero pressure</li>
@@ -426,7 +426,7 @@
           </tr>
           <tr>
             <td><strong>Sprout</strong></td>
-            <td>Qwen 3.5 0.8B</td>
+            <td>Qwen 3.8-Distill 2B <span style="opacity:.6">(was 0.8B)</span></td>
             <td>Jetson Orin Nano (8GB)</td>
             <td>Edge cognition, instance-participation research, longest raising history</td>
           </tr>
@@ -547,7 +547,7 @@ response = llm.generate(prompt + tool_context)
         <tbody>
           <tr><td>Gemma3 4B</td><td>T2</td><td>5/5</td><td>Clean XML tool calls on every probe</td></tr>
           <tr><td>Gemma3 12B</td><td>T2</td><td>TBD</td><td>Expected strong T2, same family as 4B</td></tr>
-          <tr><td>Qwen 3.5 0.8B</td><td>T3</td><td>TBD</td><td>Primary Sprout raising model</td></tr>
+          <tr><td>Qwen 3.8-Distill 2B (empero)</td><td>T3</td><td>TBD</td><td>Primary Sprout raising model — reasoning + tool-use; identity carried from 0.8B</td></tr>
           <tr><td>Phi4 14B</td><td>T2</td><td>TBD</td><td>Expected strong T2, possibly T1</td></tr>
         </tbody>
       </table>
