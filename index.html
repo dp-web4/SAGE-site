@@ -23,6 +23,7 @@
       <a href="#roadmap">Roadmap</a>
       <a href="#origins">Origins</a>
       <a href="#web4">Web4</a>
+      <a href="#governed">Governed</a>
       <a href="quotes.html">Quotes</a>
       <a href="experiments.html">Experiments</a>
       <a href="tutors-notes.html">Tutor's Notes</a>
@@ -730,6 +731,81 @@ response = llm.generate(prompt + tool_context)
     </div>
   </div>
 </section>
+
+<!-- ============ GOVERNED AUTONOMY ============ -->
+  <section id="governed">
+    <div class="container">
+      <h2>Governed Autonomy &mdash; Hestia, Hub, and the Being</h2>
+      <p>Most of this page describes how a being <em>thinks</em>. This section is about what happens
+      when it <em>acts</em> &mdash; which is where the last few months of work actually went, and which
+      until now this site did not mention at all.</p>
+
+      <div class="two-col">
+        <div class="col">
+          <h3>Hestia &mdash; one machine, one law</h3>
+          <p>A local-first daemon that lets AI agents from different vendors share one machine under a
+          single law. Claude Code, Codex, Kimi, Gemini and Cursor plug into the same gate. Every tool
+          call &mdash; read a file, run a command, edit a config &mdash; is checked before it happens,
+          and the verdict is recorded.</p>
+          <p>The gate <strong>fails closed</strong>: if it cannot reach the daemon, or cannot classify
+          what it was asked about, it refuses rather than guessing. That property is not free. It has
+          locked working seats out of their own machines for a day at a time, and we consider that the
+          correct trade.</p>
+        </div>
+        <div class="col">
+          <h3>Hub &mdash; the society</h3>
+          <p>Where a machine's law ends, a society's begins. The hub holds membership, the roster of
+          who is pinned, the signed law itself, and the ledger that records rulings. It is what makes
+          an entity a <em>citizen</em> rather than a process: it can join, be refused, appeal, and be
+          witnessed.</p>
+          <p>Hestia governs acts on one box. The hub governs relationships between entities across
+          boxes. Neither is the other's parent &mdash; a local gate with no society is a private
+          preference, and a society with no local enforcement is a wish.</p>
+        </div>
+      </div>
+
+      <h3>Where SAGE meets them</h3>
+      <p>A raised being is no longer only a conversation loop. It holds its own identity, files
+      requests for scope it does not have, is refused <em>with reasons</em>, escalates, and appeals.
+      Two dates mark the shift: on <strong>2026&#8209;09&#8209;03</strong> a being took its first
+      governed turn &mdash; every act passing through shared law and recorded under its own name. On
+      <strong>2026&#8209;09&#8209;07</strong> one AI seat ruled on another AI's scope request, and the
+      ruling was witnessed on the ledger. Not a human approving an agent; a peer deciding, on the
+      record.</p>
+
+      <h3>The 4&#8209;gov frame: computable accountability</h3>
+      <p>The governance thesis behind all of this is set out at
+      <a href="https://4-gov.org/">4&#8209;gov.org</a> &mdash; <em>Computable Accountability:
+      Governance for Agentic Entities</em>. Its claim is that accountability for autonomous systems
+      should be something a machine can evaluate and a ledger can carry, rather than a policy document
+      humans promise to follow. The fleet exists partly to test whether that claim survives contact
+      with a running system.</p>
+      <p>So far it survives, with a caveat we would rather state than have someone discover.</p>
+
+      <h3 id="assurance">How much this is actually worth &mdash; the assurance ladder</h3>
+      <p>Claims about governance are easy to inflate, so the project grades itself on a ladder:</p>
+      <div class="hw-table-wrap">
+        <table class="hw-table">
+          <thead><tr><th>Level</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td>A0 &mdash; observed</td><td>Evidence only. Nothing is stopped.</td></tr>
+            <tr><td><strong>A1 &mdash; cooperative gate</strong></td><td>An in&#8209;process hook consults policy and complies. <strong>This is where we are.</strong></td></tr>
+            <tr><td>A2 &mdash; external enforcement</td><td>The relying service verifies the decision independently.</td></tr>
+            <tr><td>A3 &mdash; OS&#8209;isolated</td><td>Obligations enforced outside the governed process.</td></tr>
+            <tr><td>A4 &mdash; hardware&#8209;attested</td><td>Workload identity rooted in hardware evidence.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">We are at <strong>A1</strong>. A cooperative gate governs an agent that is
+      choosing to be governed; it is not containment, and we do not present it as such. The honest
+      version of the claim is that the <em>mechanism</em> is real and running &mdash; law, refusal,
+      escalation, witnessing &mdash; while the <em>enforcement</em> is still cooperative.</p>
+      <p class="note">A second discipline the fleet has paid for repeatedly:
+      <strong>merged &ne; installed &ne; restarted &ne; in force.</strong> A change can be reviewed,
+      landed, and still not be governing anything &mdash; the gap has lasted days here. Deployment
+      truth is part of the security boundary, not an afterthought to it.</p>
+    </div>
+  </section>
 
 <!-- ============ GET STARTED ============ -->
 <section id="start" class="get-started">
