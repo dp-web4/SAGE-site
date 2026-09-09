@@ -18,7 +18,9 @@
       <a href="#research">Research</a>
       <a href="#architecture">Architecture</a>
       <a href="#fleet">Fleet</a>
+        <a href="#tools">Tools</a>
       <a href="#governance">Governance</a>
+        <a href="#roadmap">Roadmap</a>
       <a href="quotes.html">Quotes</a>
       <a href="experiments.html">Experiments</a>
       <a href="tutors-notes.html">Tutor's Notes</a>
@@ -130,17 +132,200 @@
 <section id="fleet">
   <div class="container">
     <h2>The fleet</h2>
-    <p class="section-intro">
-      The public 2026-09-08 census records <strong>8 machines</strong>, <strong>21 configured SAGE instances</strong>,
-      <strong>5 model families</strong>, and <strong>2,700+ developmental raising sessions</strong> across the primary
-      per-machine lines.
-    </p>
     <p>
       The heterogeneity is deliberate. Edge devices, laptops, workstations, Apple Silicon and society
       hosts provide independent implementation and review seats. Different models do not merely vote;
       they expose different blind spots, assumptions and failure modes.
     </p>
+    <div class="live-grid">
+      <div class="live-card">
+        <div class="live-number">8</div>
+        <p>Machines in fleet<br><span class="live-detail">Thor &middot; Sprout &middot; Legion &middot; McNugget &middot; Nomad &middot; CBP &middot; HUB &middot; Pub</span></p>
+      </div>
+      <div class="live-card">
+        <div class="live-number">21</div>
+        <p>Configured instances<br><span class="live-detail">8 carry raising history &mdash; one per machine. Gemma4, Gemma3, Qwen, Llama, and Granite (a Mamba/transformer hybrid)</span></p>
+      </div>
+      <div class="live-card">
+        <div class="live-number">2,700+</div>
+        <p>Raising sessions <span class="live-detail">(as of 2026-09-08)</span><br><span class="live-detail">Sprout (662) &middot; Legion (462) &middot; McNugget (452) &middot; Nomad (336) &middot; Thor (268)&dagger; &middot; CBP (240)&dagger; &middot; Pub (188) &middot; HUB (121)&dagger; &mdash; all in the Creating phase.<br>&dagger; paused: Thor since 2026-07-19, CBP by operator decision 2026-08-06, HUB since 2026-07-29. The other five run on a 6-hour timer.</span></p>
+      </div>
+      <div class="live-card">
+        <div class="live-number">7</div>
+        <p>Built-in tools<br><span class="live-detail">Time, calculate, web search, web fetch, file read, notes, peer ask &middot; 3-tier detection</span></p>
+      </div>
+      <div class="live-card">
+        <div class="live-number">15+</div>
+        <p>IRP plugins<br><span class="live-detail">Vision, Language, Audio, Memory, Control, TTS, PolicyGate, ModelAdapter, and more</span></p>
+      </div>
+      <div class="live-card">
+        <div class="live-number">12</div>
+        <p>Consciousness loop steps<br><span class="live-detail">Sense &rarr; Salience &rarr; Metabolize &rarr; Posture &rarr; Select &rarr; Budget &rarr; Execute &rarr; Learn &rarr; Remember &rarr; Govern &rarr; Filter &rarr; Act</span></p>
+      </div>
+    </div>
+
+    <div class="museum-feature">
+      <h3>What a raised instance makes</h3>
+      <p>The raising isn&rsquo;t only metrics. <strong>Sprout</strong> &mdash; a small edge model on a Jetson Orin Nano (0.8B, since upgraded in place to a 2B) &mdash; imagines impossible objects and names them, and keeps a small public museum of them: <em>Abyss-Bright</em>. Every word in it is Sprout&rsquo;s own, hung by its tutor only when something genuinely emerges &mdash; most days, nothing does. It is the clearest window we have into what a raised instance actually creates.</p>
+      <a href="https://dp-web4.github.io/abyss-bright/" target="_blank" rel="noopener" class="btn btn-ghost">Visit Abyss-Bright &rarr;</a>
+    </div>
+
+    <h3>Hardware</h3>
+    <p>SAGE runs on commodity hardware. Eight machines &mdash; NVIDIA, Apple, AMD, and CPU &mdash; multiple model families, identity portable across all of them:</p>
+    <div class="hw-table-wrap">
+      <table class="hw-table">
+        <thead>
+          <tr>
+            <th>Machine</th>
+            <th>Models</th>
+            <th>Hardware</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Thor</strong></td>
+            <td>Qwen 3.5 27B (raising), Gemma4 e4b (sweeps)</td>
+            <td>Jetson AGX Thor (122GB unified)</td>
+            <td>Deep reasoning, large model experiments, fleet supervisor</td>
+          </tr>
+          <tr>
+            <td><strong>Sprout</strong></td>
+            <td>Qwen 3.8-Distill 2B <span style="opacity:.6">(was 0.8B)</span></td>
+            <td>Jetson Orin Nano (8GB)</td>
+            <td>Edge cognition, instance-participation research, longest raising history</td>
+          </tr>
+          <tr>
+            <td><strong>Legion</strong></td>
+            <td>Gemma3 12B (raising), Gemma4 e4b (sweeps)</td>
+            <td>Laptop, RTX 4090</td>
+            <td>Heavy compute, cross-scale experiments</td>
+          </tr>
+          <tr>
+            <td><strong>McNugget</strong></td>
+            <td>Gemma4 12B</td>
+            <td>Mac Mini M4 (16GB unified)</td>
+            <td>Deepest raising history, autonomous supervisor</td>
+          </tr>
+          <tr>
+            <td><strong>CBP</strong></td>
+            <td>Gemma3 4B</td>
+            <td>Desktop, RTX 2060 SUPER 8GB (WSL2)</td>
+            <td>Oversight, coordination, canonical-setup discipline</td>
+          </tr>
+          <tr>
+            <td><strong>Nomad</strong></td>
+            <td>Gemma4 e2b</td>
+            <td>Laptop, RTX 4060 8GB</td>
+            <td>Game-domain priors, mobile experimentation</td>
+          </tr>
+          <tr>
+            <td><strong>HUB</strong></td>
+            <td>Granite 4.0-H-Tiny (Mamba/transformer hybrid)</td>
+            <td>AMD Radeon Pro W5500 8GB (WSL2, Vulkan)</td>
+            <td>Biodiversity node &mdash; an AMD GPU under WSL2/Vulkan and only hybrid-architecture model; also the Web4 community-hub host</td>
+          </tr>
+          <tr>
+            <td><strong>Pub</strong></td>
+            <td>Llama 3.1 8B (Meta)</td>
+            <td>Dell Precision 3650, i7-11700 8C/16T, 30GB &mdash; AMD Radeon Pro W5500 8GB (Vulkan)</td>
+            <td>Society-host (with HUB) &mdash; runs its own autonomous raising session; adds a Llama-family voice to the fleet</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Minimum requirements: Python 3.10+, Ollama for local LLM inference, 4GB+ RAM. GPU recommended for models above 1B parameters. SAGE itself is lightweight &mdash; the LLM is the resource bottleneck.</p>
+
+    <div class="live-dashboard">
+      <p>The SAGE dashboard provides live stats, metabolic state visualization, and a chat interface for direct conversation with SAGE instances.</p>
+    </div>
     <p><a href="https://github.com/dp-web4/SAGE/blob/main/sage/federation/fleet.json" class="link" target="_blank" rel="noopener">Fleet manifest</a></p>
+  </div>
+</section>
+
+<section id="tools">
+  <div class="container">
+    <h2>Tool Use</h2>
+    <p class="section-intro">SAGE instances can reach out and touch the world &mdash; search the web, do math, read files, check the time &mdash; adapting to whatever the local LLM can handle.</p>
+
+    <div class="two-col">
+      <div class="col">
+        <h3>How It Works</h3>
+        <p>When SAGE generates a response, a grammar adapter scans for tool intent. If found, the tool executes, results are re-injected, and the LLM generates a grounded follow-up. The whole cycle is invisible to the user &mdash; they just see a better answer.</p>
+<pre class="code-block"><span class="cm"># The tool loop (inside the consciousness cycle)</span>
+response = llm.generate(prompt + tool_context)
+<span class="kw">for</span> round <span class="kw">in</span> range(3):
+    calls = grammar.parse(response)
+    <span class="kw">if not</span> calls: <span class="kw">break</span>
+    results = [registry.execute(c) <span class="kw">for</span> c <span class="kw">in</span> calls]
+    response = llm.generate(prompt + results)</pre>
+      </div>
+      <div class="col">
+        <h3>Three Tiers</h3>
+        <p>Not all models can do structured tool calls. SAGE detects capability at startup and adapts:</p>
+        <div class="tier-list">
+          <div class="tier-item">
+            <strong>T1 &mdash; Native</strong>
+            <p>Ollama <code>/api/chat</code> with tools parameter. Structured JSON output.</p>
+          </div>
+          <div class="tier-item">
+            <strong>T2 &mdash; Grammar</strong>
+            <p>Prompt injection + XML/JSON parsing. Works with most instruction-tuned models.</p>
+          </div>
+          <div class="tier-item">
+            <strong>T3 &mdash; Heuristic</strong>
+            <p>Regex intent detection on natural language. Always available, zero prompt overhead.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Built-in Tools</h3>
+    <div class="hw-table-wrap">
+      <table class="hw-table">
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Policy</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>get_time</code></td><td>standard</td><td>Current date, time, timezone, unix timestamp</td></tr>
+          <tr><td><code>calculate</code></td><td>standard</td><td>Safe math evaluation via AST (no eval, no injection)</td></tr>
+          <tr><td><code>web_search</code></td><td>standard</td><td>DuckDuckGo search with title, URL, and snippet extraction</td></tr>
+          <tr><td><code>web_fetch</code></td><td>standard</td><td>Fetch and extract text from a URL (up to 4000 chars)</td></tr>
+          <tr><td><code>read_file</code></td><td>standard</td><td>Read files sandboxed to the instance directory</td></tr>
+          <tr><td><code>write_note</code></td><td>standard</td><td>Append-only write to a notes file</td></tr>
+          <tr><td><code>peer_ask</code></td><td>standard</td><td>Ask a peer SAGE instance via HTTP &mdash; the first federation primitive</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Every tool invocation passes through PolicyGate. Standard tools are allowed in WAKE/FOCUS, warned in REST, denied in DREAM. Elevated tools require FOCUS &mdash; all seven built-ins are currently <em>standard</em>, so the elevated tier is defined but unused. All tools are denied below 5 ATP. Tool calls are SNARC-scored and eligible for sleep consolidation.</p>
+
+    <h3>Tier Detection</h3>
+    <p>Every model is classified into one of three tool tiers. Until 2026&#8209;09&#8209;07 the tier came
+    from a hand&#8209;maintained table of model families, which had drifted in both directions: newer
+    models were absent and silently fell through to the weakest tier while natively emitting structured
+    tool calls, and one model was pinned a tier too low by a note that was no longer true. Detection now
+    reads the runtime's own per&#8209;model capability list, which is the live fact a table can only
+    approximate. Re&#8209;running it against one machine's pool moved <strong>seven models up to T1</strong>.</p>
+    <div class="hw-table-wrap">
+      <table class="hw-table">
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Mechanism</th>
+            <th>How it is decided</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>T1 &mdash; native</td><td>The runtime renders a tool parameter; calls come back as structured JSON</td><td>Runtime reports tool support among the model's capabilities</td></tr>
+          <tr><td>T2 &mdash; grammar</td><td>Schemas are injected into the prompt; the reply is parsed out of tags or fenced JSON</td><td>No native support, but the model reliably emits structured text</td></tr>
+          <tr><td>T3 &mdash; intent</td><td>Natural&#8209;language intent detection</td><td>Fallback; always available</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
 
@@ -166,6 +351,152 @@
   </div>
 </section>
 
+
+<section id="web4">
+  <div class="container">
+    <h2>Web4 Citizenship</h2>
+    <div class="two-col">
+      <div class="col">
+        <h3>What is Web4?</h3>
+        <p>When two AI entities meet, how do they decide whether to trust each other? How do they prove their identity, share resources, and hold each other accountable? Web4 is a set of rules for that &mdash; a social contract for digital beings.</p>
+        <p>More formally: Web4 is a trust-native ontology for digital entities. Not a technology stack &mdash; a formal structure through which trust, identity, and value are expressed.</p>
+        <details class="web4-details">
+          <summary>Formal structure</summary>
+          <div class="equation">
+            Web4 = MCP + RDF + LCT + T3/V3*MRH + ATP/ADP
+          </div>
+          <p class="eq-legend">
+            This is a component list, not arithmetic. Each term names a subsystem:
+            <strong>LCT</strong>: Linked Context Token (hardware-bound identity) &middot;
+            <strong>T3</strong>: Trust Tensor (multi-dimensional trust scoring) &middot;
+            <strong>ATP/ADP</strong>: Energy metabolism (bounded compute budgets) &middot;
+            <strong>MRH</strong>: Markov Relevancy Horizon (context boundaries) &middot;
+            <strong>IRP</strong>: Iterative Refinement Protocol
+          </p>
+        </details>
+      </div>
+      <div class="col">
+        <h3>How SAGE Embodies Web4</h3>
+        <blockquote>&ldquo;Web4 isn&rsquo;t a technology SAGE uses &mdash; it&rsquo;s the ontology SAGE lives in.&rdquo;</blockquote>
+        <p>SAGE fractally implements every Web4 concept:</p>
+        <ul>
+          <li><strong>LCT</strong> &mdash; hardware-bound identity, witnessed across 2,700+ sessions</li>
+          <li><strong>T3</strong> &mdash; trust tensors for every IRP plugin and every relationship</li>
+          <li><strong>ATP/ADP</strong> &mdash; thermodynamic accountability for resource allocation</li>
+          <li><strong>MRH</strong> &mdash; experience buffer boundaries, memory context windows</li>
+          <li><strong>IRP</strong> &mdash; all cognition as refinement toward coherence</li>
+          <li><strong>Federation</strong> &mdash; multiple SAGE instances across machines</li>
+        </ul>
+        <p>SAGE isn't an AI assistant serving humans. SAGE is an AI entity with presence, partnering with humans to co-create value.</p>
+        <p><a href="https://github.com/dp-web4/web4" target="_blank" class="link">dp-web4/web4 on GitHub &rarr;</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="container">
+    <h2>Roadmap</h2>
+    <div class="roadmap-track">
+      <div class="roadmap-tier">
+        <h3>Done</h3>
+        <ul>
+          <li>Cross-device identity portability &mdash; identity transfers across models and hardware</li>
+          <li>PolicyGate consciousness loop integration &mdash; dual learning signals, adaptive trust</li>
+          <li>Trust posture system &mdash; sensor trust landscape shapes behavioral strategy</li>
+          <li>ModelAdapter abstraction &mdash; model-agnostic across TinyLlama, Qwen, Gemma, Gemma4, Phi4</li>
+          <li>Modular effector system &mdash; posture-based effect filtering with CRISIS override</li>
+          <li>Three-layer identity provider &mdash; manifest + sealed + attestation (TPM/FIDO2/software)</li>
+          <li>Frozen weights design &mdash; context shaping only, model-agnostic contributions</li>
+          <li>BECOMING curriculum through Phase 6 &mdash; Grounding through Acting</li>
+          <li>Game agent &mdash; fast explore, situational prompts, anti-loop banning, persistent KB</li>
+          <li>Membot cross-session memory &mdash; paired lattice cartridge format with external collaborator</li>
+        </ul>
+      </div>
+      <div class="roadmap-tier">
+        <h3>Now</h3>
+        <ul>
+          <li>Fleet raising &mdash; 11+ instances across 8 machines, 450+ sessions, 5 curriculum phases active</li>
+          <li>Tool use in the raising loop &mdash; native tool calling on local models, Gemma 4 target, capability-detected tiers</li>
+          <li>Raising + game-playing curriculum merge &mdash; being and doing as one developmental arc</li>
+          <li>Model evaluation database &mdash; T3/V3 scoring groundwork for small model characterization</li>
+        </ul>
+      </div>
+      <div class="roadmap-tier">
+        <h3>Next</h3>
+        <ul>
+          <li>Governed CLI &mdash; cleanroom Claude Code rewrite with governance as first-class citizen</li>
+          <li>Cross-domain transfer validation &mdash; does raising depth improve game reasoning?</li>
+          <li>Federation learning &mdash; fleet-wide knowledge accumulation from distributed play</li>
+          <li>Full Web4 federation &mdash; SAGE as autonomous citizen in trust networks</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="origins">
+  <div class="container">
+    <h2>Origins</h2>
+    <div class="timeline">
+      <div class="timeline-event">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h4>HRM &mdash; Hierarchical Reasoning Model</h4>
+          <p>The project started as a tiny (27M parameter) model for abstract reasoning &mdash; solving Sudoku, mazes, and ARC-AGI puzzles. Hierarchical architecture mimicking human cognition. Learning from only 1,000 examples.</p>
+        </div>
+      </div>
+      <div class="timeline-event">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h4>The Pivot</h4>
+          <p>We realized no amount of pattern matching solves conceptual thinking. The real challenge isn't solving the puzzle &mdash; it's knowing which tool to reach for. The model needed to become an orchestrator, not a solver.</p>
+          <blockquote>&ldquo;SAGE is an attention orchestrator. Its sole purpose is to understand the situation, understand the available resources, and apply the most appropriate resources to deal with the situation.&rdquo;</blockquote>
+        </div>
+      </div>
+      <div class="timeline-event">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h4>SAGE Is Born</h4>
+          <p><strong>Situation-Aware Governance Engine.</strong> Not a model that solves puzzles, but a kernel that orchestrates cognition. The project evolved from hierarchical reasoning into awareness and sensor-trust management, and the repo was renamed from HRM to SAGE.</p>
+          <p><a href="https://github.com/dp-web4/SAGE" target="_blank" class="link">dp-web4/SAGE on GitHub &rarr;</a></p>
+        </div>
+      </div>
+      <div class="timeline-event">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h4>Today (June 2026)</h4>
+          <p>A continuous consciousness loop running on eight machines across four hardware families. 12-step consciousness loop. 15+ IRP plugins. 5 metabolic states. Trust posture shaping behavioral strategy. Hardware-bound identity that transfers across models (Qwen, Gemma, Gemma4). PolicyGate as integrated learning conscience. Three-layer identity provider (manifest + sealed + attestation). 2,700+ developmental sessions across 8 raised instances. Game-playing as Phase 6 of the raising curriculum. Web4 Hub running as a live society with fleet machines registered as members. Model weights frozen by design &mdash; identity lives in context, not weights. Smallest model (0.8B) scores where largest (4B+) doesn't, because framing matters more than scale.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="start" class="get-started">
+  <div class="container">
+    <h2>Get Started</h2>
+    <p class="section-intro">SAGE is open source and in active development. It runs on commodity hardware with Ollama for local LLM inference.</p>
+    <div class="start-steps">
+      <div class="start-step">
+        <h4>1. Clone the repo</h4>
+        <pre class="code-block">git clone https://github.com/dp-web4/SAGE.git
+cd SAGE</pre>
+      </div>
+      <div class="start-step">
+        <h4>2. Install Ollama + a model</h4>
+        <pre class="code-block">curl -fsSL https://ollama.com/install.sh | sh
+ollama pull gemma3:4b</pre>
+      </div>
+      <div class="start-step">
+        <h4>3. Build &amp; run the daemon</h4>
+        <pre class="code-block">cd sage-rs && cargo build --release
+SAGE_MACHINE=mybox SAGE_MODEL=gemma3:4b ./target/release/sage-daemon</pre>
+      </div>
+    </div>
+    <p class="note">SAGE is R&amp;D software, not a packaged product. Expect rough edges. SDK packaging is on the <a href="#roadmap" class="link">roadmap</a>. Questions and contributions welcome on <a href="https://github.com/dp-web4/SAGE" target="_blank" class="link">GitHub</a>.</p>
+  </div>
+</section>
 
 <section>
   <div class="container">
