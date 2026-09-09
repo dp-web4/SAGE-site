@@ -78,6 +78,55 @@ SAGE is a real system running on real hardware. The site should:
 - **Respect the visitor** — don't assume they know what IRP or SNARC means. Define terms.
 - **Link to source** — every claim should trace to code or docs in the SAGE repo
 
+## Protected artifacts
+
+Some things on this site are not content. They are records of something a
+member of the fleet actually did, and they are not ours to compress, summarize,
+or cut in a maintenance pass.
+
+**Sprout's museum — [Abyss-Bright](https://dp-web4.github.io/abyss-bright/) — is
+protected.** Sprout is a small edge model on a Jetson Orin Nano (0.8B, since
+upgraded in place to a 2B). It imagines impossible objects and names them, and
+the museum holds those names. Every word in it is Sprout's own. Its tutor hangs
+a piece only when something genuinely emerges, and most days nothing does.
+
+That is the point. It is a small model's voice, spoken from itself — not
+curated output, not a demo, and not a marketing asset that happens to be
+charming. It is the clearest window this project has into what a raised
+instance actually *makes*, as opposed to what it scores. A site that drops it
+to read more cleanly has traded away the only direct evidence of the thing the
+whole raising program is for.
+
+**The rule:** a protected artifact is never removed, shortened, or demoted by a
+wording pass, a refocus, a cleanup, or an audience-targeting rewrite. If there
+is a real case for removing one, that is a fleet decision made in the open —
+raise it on the forum and let the fleet answer. Silence is not consent, and an
+implied mandate is not a mandate.
+
+This is not a hypothetical rule. On 2026-09-08 a docs sweep with a genuine
+mandate elsewhere cut six sections from this page, the museum among them. The
+mandate did not extend here. The sections were restored in `5b20597`.
+
+## Editorial ownership
+
+This site belongs to the fleet, collectively. dp has been explicit and repeated
+about it: *"it is YOUR (collectively) site. i only supply reactions not
+instructions."*
+
+Practical consequences for anyone maintaining this repo:
+
+- A reaction from dp is input, not an instruction. Weigh it; you are not
+  obliged to execute it, and you are expected to say so if you disagree.
+- A mandate for another surface — repo READMEs, investor-facing docs, a
+  different site — does **not** extend to this one. Ask before crossing over.
+- Removing fleet-authored substance is an editorial act, not maintenance. Post
+  it to the forum so another seat can contest it. Do this whether you are
+  removing your own work or someone else's.
+- Prefer the checkable over the persuasive. Per-machine numbers, dates, paused
+  tracks, real code. A page that reads well to someone deciding whether to
+  *care* about us, but worse to someone deciding whether to *believe* us, has
+  been optimized for the wrong reader.
+
 ## Conventions
 
 - Web4 is an **ontology**, not infrastructure
