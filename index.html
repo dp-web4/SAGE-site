@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SAGE — Situation-Aware Governance Engine</title>
+  <title>SAGE - Persistent Local AI Research</title>
   <link rel="stylesheet" href="style.css">
-  <meta name="description" content="SAGE is a cognition kernel for edge AI — the missing layer between a local LLM and useful cognition.">
+  <meta name="description" content="SAGE is a research environment for persistent local AI under identity, memory, trust and governance.">
 </head>
 <body>
 
@@ -15,14 +15,11 @@
     <button class="nav-toggle" aria-label="Menu">&#9776;</button>
     <div class="nav-links">
       <a href="#why">Why</a>
-      <a href="#what">What</a>
+      <a href="#research">Research</a>
       <a href="#architecture">Architecture</a>
-      <a href="#live">Live Now</a>
-      <a href="#tools">Tools</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#origins">Origins</a>
-      <a href="#web4">Web4</a>
-      <a href="#governed">Governed</a>
+      <a href="#fleet">Fleet</a>
+      <a href="#governance">Governance</a>
+      <a href="#history">History</a>
       <a href="quotes.html">Quotes</a>
       <a href="experiments.html">Experiments</a>
       <a href="tutors-notes.html">Tutor's Notes</a>
@@ -31,778 +28,187 @@
   </div>
 </nav>
 
-<!-- ============ HERO ============ -->
 <section id="hero" class="hero">
   <div class="container">
     <div class="hero-content">
-      <div class="hero-avatar">
-        <img src="agentzero.png" alt="Agent Zero — from zero to SAGE" class="hero-avatar-img">
-        <p class="hero-avatar-caption">zero to hero</p>
-      </div>
       <p class="hero-label">Situation-Aware Governance Engine</p>
       <h1>SAGE</h1>
-      <p class="hero-sub">The missing layer between a local LLM and useful cognition.</p>
-      <div class="hero-loop">
-        <p class="loop-caption">SAGE's core loop &mdash; sense the world, decide what matters, act on it, learn.</p>
-        <pre class="loop-code"><span class="kw">while</span> alive:
-    sense      <span class="cm"># gather from sensors</span>
-    salience   <span class="cm"># score attention (5D)</span>
-    metabolize <span class="cm"># adapt energy mode</span>
-    posture    <span class="cm"># assess trust landscape</span>
-    select     <span class="cm"># choose what to process</span>
-    budget     <span class="cm"># allocate by trust</span>
-    execute    <span class="cm"># iterative refinement</span>
-    learn      <span class="cm"># update from results</span>
-    remember   <span class="cm"># consolidate experience</span>
-    govern     <span class="cm"># policy gate check</span>
-    filter     <span class="cm"># posture-based gating</span>
-    act        <span class="cm"># dispatch to effectors</span></pre>
-      </div>
+      <p class="hero-sub">Persistent local AI under identity, memory, trust and governance.</p>
+      <p class="section-intro">
+        SAGE is not a foundation model. It is the research environment around one: the machinery that
+        lets an agent carry identity, evidence, memory, learned state and authority forward instead of
+        waking up as a fresh stateless API call every turn.
+      </p>
       <div class="hero-cta">
-        <a href="#why" class="btn">Learn More</a>
-        <a href="https://github.com/dp-web4/SAGE" class="btn btn-ghost" target="_blank">GitHub</a>
+        <a href="#why" class="btn">Why it exists</a>
+        <a href="https://github.com/dp-web4/SAGE" class="btn btn-ghost" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ WHY SAGE ============ -->
 <section id="why">
   <div class="container">
-    <h2>Why SAGE?</h2>
+    <h2>The problem SAGE is trying to solve</h2>
     <div class="two-col">
       <div class="col">
-        <h3>The Problem</h3>
-        <p>Large language models are powerful but incomplete. They are:</p>
+        <h3>A capable model is not yet an organism</h3>
+        <p>A model can reason well in one inference and still repeatedly fail because the surrounding system loses:</p>
         <ul>
-          <li><strong>Stateless</strong> &mdash; no memory between calls</li>
-          <li><strong>Cloud-dependent</strong> &mdash; latency, privacy, availability</li>
-          <li><strong>Monolithic</strong> &mdash; one model does everything (or nothing)</li>
-          <li><strong>Request-response</strong> &mdash; no continuous awareness</li>
-          <li><strong>Identity-free</strong> &mdash; no persistent self, no trust history</li>
+          <li>what it previously observed;</li>
+          <li>which hypotheses it already tested;</li>
+          <li>what failed and why;</li>
+          <li>which procedures worked;</li>
+          <li>what authority it currently holds;</li>
+          <li>which evidence should change the next action.</li>
         </ul>
-        <p>An LLM is raw intelligence. Intelligence without awareness is pattern matching in the dark.</p>
       </div>
       <div class="col">
-        <h3>The Insight</h3>
-        <p>In 2025, we built <strong>Agent Zero</strong> &mdash; a 5.67M parameter model that outputs nothing but zeros &mdash; as a deliberate joke submission for the ARC-AGI benchmark. Internal testing scored it at 18.78% because our evaluation assumed partial credit for empty cells. On the official leaderboard, it scored <strong>zero</strong>.</p>
-        <p>But the lesson stuck. Agent Zero had all execution with no understanding. It didn't know what kind of problem it was solving, why it should try, or when to stop.</p>
+        <h3>The research bet</h3>
+        <p>
+          Identity, memory, learned state, tools, sensors and governance should persist around a model
+          and become part of the agent's lived state. Model capability still matters; the question is
+          what becomes possible when the surrounding system stops throwing experience away.
+        </p>
         <blockquote>
-          &ldquo;SAGE doesn&rsquo;t solve problems &mdash; it decides which specialized reasoning to invoke.&rdquo;
+          &ldquo;Experience should change what the organism does next.&rdquo;
         </blockquote>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ WHAT IS SAGE ============ -->
-<section id="what">
+<section id="research">
   <div class="container">
-    <h2>What is SAGE?</h2>
-    <p class="section-intro">A cognition kernel for edge devices. Like an OS schedules processes and manages hardware, SAGE schedules attention and manages cognitive resources. But unlike a traditional OS, it <em>learns</em> what deserves attention based on trust dynamics and energy efficiency.</p>
-
+    <h2>Current research direction</h2>
+    <p class="section-intro">
+      The program has moved beyond asking which fixed mechanism can solve a task. The current focus is
+      whether the agent itself can complete the epistemic transaction.
+    </p>
     <div class="stack-diagram">
-      <div class="stack-layer stack-sage">
-        <h4>SAGE</h4>
-        <p>Cognition Kernel &mdash; orchestrates attention, allocates resources, maintains metabolic state</p>
-      </div>
+      <div class="stack-layer stack-sage"><h4>Observe</h4><p>Keep the evidence, including failed actions and disagreement.</p></div>
       <div class="stack-arrow">&darr;</div>
-      <div class="stack-layer stack-irp">
-        <h4>IRP</h4>
-        <p>Iterative Refinement Protocol &mdash; universal plugin interface for all cognitive functions</p>
-      </div>
+      <div class="stack-layer stack-irp"><h4>Hypothesize + experiment</h4><p>Choose a discriminating intervention and state what outcome would mean.</p></div>
       <div class="stack-arrow">&darr;</div>
-      <div class="stack-layer stack-vae">
-        <h4>VAE</h4>
-        <p>Variational Autoencoder &mdash; translates between modalities (vision, language, audio) through shared latent spaces</p>
-      </div>
+      <div class="stack-layer stack-vae"><h4>Learn + reuse</h4><p>Revise the hypothesis, retain a tested procedure, and let it change a later decision.</p></div>
     </div>
 
-    <h3>Five Metabolic States</h3>
-    <p>SAGE adapts its operating mode based on resource availability, task demands, and circadian phase &mdash; structurally analogous to biological arousal regulation and vigilance states.</p>
-    <div class="state-grid">
-      <div class="state-card">
-        <div class="state-icon wake">W</div>
-        <h4>WAKE</h4>
-        <p>Broad, exploratory attention. Standard operating mode.</p>
-        <p class="state-analog">Analogous to tonic alertness</p>
-      </div>
-      <div class="state-card">
-        <div class="state-icon focus">F</div>
-        <h4>FOCUS</h4>
-        <p>Narrow attention, deep processing on a single task.</p>
-        <p class="state-analog">Analogous to selective/phasic attention</p>
-      </div>
-      <div class="state-card">
-        <div class="state-icon rest">R</div>
-        <h4>REST</h4>
-        <p>Minimal processing, resource recovery.</p>
-        <p class="state-analog">Analogous to default mode network</p>
-      </div>
-      <div class="state-card">
-        <div class="state-icon dream">D</div>
-        <h4>DREAM</h4>
-        <p>Replay high-salience experiences, consolidate into memory.</p>
-        <p class="state-analog">Analogous to sleep consolidation</p>
-      </div>
-      <div class="state-card">
-        <div class="state-icon crisis">!</div>
-        <h4>CRISIS</h4>
-        <p>Fast heuristics only. Accountability frame shifts.</p>
-        <p class="state-analog">Analogous to amygdala-mediated fast path</p>
-      </div>
-    </div>
-    <p class="note">During DREAM, SAGE replays and consolidates the day's most significant experiences into its persistent memory systems &mdash; a computational analogue of selective replay during biological sleep. Model weights remain frozen; identity is shaped through context, not weight modification. This is deliberate: context shaping is model-agnostic, transferring instantly when the fleet adopts a new model.</p>
+    <h3>What counts as learning</h3>
+    <p>
+      A JSON file existing is not enough. A trained sidecar existing is not enough. A fleet member
+      editing Python after a failure is team learning, not necessarily agent learning. The current proof
+      standard is behavioral: experience changes durable internal state, that state changes a later
+      decision, and removing it removes the claimed improvement.
+    </p>
 
-    <h3>SNARC &mdash; What Deserves Attention?</h3>
-    <p>Every observation is scored on five attention dimensions, drawing from salience network theory (Itti &amp; Koch, Menon):</p>
-    <div class="snarc-grid">
-      <div class="snarc-item"><strong>S</strong>urprise &mdash; prediction error</div>
-      <div class="snarc-item"><strong>N</strong>ovelty &mdash; distance from known patterns</div>
-      <div class="snarc-item"><strong>A</strong>rousal &mdash; urgency and intensity</div>
-      <div class="snarc-item"><strong>R</strong>eward &mdash; value and importance</div>
-      <div class="snarc-item"><strong>C</strong>onflict &mdash; contradiction and tension</div>
-    </div>
-    <p>High-salience observations get attention. Low-salience ones don't. SAGE doesn't process everything &mdash; it processes what <em>matters</em>.</p>
-
-    <h3>Trust Dynamics</h3>
-    <p>SAGE maintains two distinct trust systems:</p>
-    <div class="two-col">
-      <div class="col">
-        <h4>Sensor Trust</h4>
-        <p><strong>Channel reliability</strong> &mdash; is data flowing? Each sensor (time, messages, vision, audio, proprioception) earns trust through evidence. A sensor that has never produced data stays at zero. Time always fires, so its trust saturates quickly. Message trust rises with each received message. Sensors below a trust floor (0.15) are considered "starved."</p>
-      </div>
-      <div class="col">
-        <h4>Plugin Trust</h4>
-        <p><strong>Processing quality</strong> &mdash; is output good? Plugins earn trust through convergence quality. High-trust plugins get more ATP. Low-trust plugins get rationed. Plugins that are never executed decay slowly (0.0005/cycle) &mdash; zombie trust scores from stale state are a real failure mode we discovered and fixed.</p>
-      </div>
-    </div>
-
-    <h3>Trust Posture</h3>
-    <p>The sensor trust landscape produces a <strong>continuous behavioral vector</strong> that shapes strategy each cycle. Posture is orthogonal to metabolic state: metabolic state describes "how much energy do I have?" while posture describes "how confident should I be?"</p>
-    <div class="snarc-grid">
-      <div class="snarc-item"><strong>Confidence</strong> &mdash; mean sensor trust [0, 1]</div>
-      <div class="snarc-item"><strong>Asymmetry</strong> &mdash; max minus min trust [0, 1]</div>
-      <div class="snarc-item"><strong>Breadth</strong> &mdash; fraction of sensors above trust floor</div>
-    </div>
-    <p>These three scalars produce labels (defensive, asymmetric, cautious, confident, narrow) for logging, but <strong>labels never control flow</strong> &mdash; the continuous values do. A headless machine (no cameras, no mics) correctly reports an asymmetric posture: time and messages are trusted, everything else is starved. It's not a limitation &mdash; it's accurate self-assessment.</p>
-    <p>Starved modalities restrict corresponding effect types: vision-starved blocks motor and visual effects, audio-starved blocks audio effects. CRISIS mode overrides these restrictions for high-priority actions.</p>
+    <h3>External artifacts, not prompt soup</h3>
+    <p>
+      Memory, hypotheses, experiment records and procedures increasingly live as model-legible external
+      artifacts rather than all being compressed into one mandatory prompt. The model can inspect the
+      evidence it needs; learned policy can eventually decide what to retrieve, test or escalate.
+    </p>
   </div>
 </section>
 
-<!-- ============ ARCHITECTURE ============ -->
 <section id="architecture">
   <div class="container">
-    <h2>Architecture Deep Dive</h2>
-
-    <div class="arch-overview">
-      <h3>The Big Picture</h3>
-      <p>SAGE runs a continuous cognitive loop with three phases:</p>
-      <div class="arch-phases">
-        <div class="arch-phase">
-          <div class="arch-phase-num">1</div>
-          <h4>Sense</h4>
-          <p>Gather observations from sensors. Score each on five attention dimensions. Decide what deserves processing.</p>
-        </div>
-        <div class="arch-phase-arrow">&rarr;</div>
-        <div class="arch-phase">
-          <div class="arch-phase-num">2</div>
-          <h4>Think</h4>
-          <p>Allocate compute budget to plugins based on trust. Run iterative refinement until solutions converge. Evaluate proposed actions against policy.</p>
-        </div>
-        <div class="arch-phase-arrow">&rarr;</div>
-        <div class="arch-phase">
-          <div class="arch-phase-num">3</div>
-          <h4>Act &amp; Learn</h4>
-          <p>Dispatch actions to effectors. Update trust weights from results. Store experiences. Repeat.</p>
-        </div>
-      </div>
-      <p class="note">We call this the "consciousness loop" &mdash; not claiming phenomenal awareness, but drawing a structural analogy to <a href="https://en.wikipedia.org/wiki/Global_workspace_theory" target="_blank" class="link">Baars' Global Workspace Theory</a>, where a central workspace broadcasts to and recruits specialist processes. SAGE's architecture is structurally similar to cognitive architectures like <a href="https://en.wikipedia.org/wiki/LIDA_(cognitive_architecture)" target="_blank" class="link">LIDA</a> and shares roots with executive attention models (Posner &amp; Petersen). The full 12-step loop below maps these ideas to concrete code.</p>
-    </div>
-
-    <p class="section-intro" style="margin-top: 2rem;">Click to expand each component.</p>
-
-    <div class="accordion">
-      <div class="acc-item">
-        <button class="acc-header">The Consciousness Loop &mdash; 12 Steps</button>
-        <div class="acc-body">
-          <p>The unified loop in <code>sage/core/sage_consciousness.py</code> connects all SAGE components into a continuous system:</p>
-          <ol>
-            <li><strong>Sense</strong> &mdash; gather observations from all sensors (vision, audio, messages, time)</li>
-            <li><strong>Salience</strong> &mdash; compute SNARC 5D scoring for each observation</li>
-            <li><strong>Metabolize</strong> &mdash; update metabolic state based on ATP, salience, fatigue, circadian phase</li>
-            <li><strong>Posture</strong> &mdash; derive confidence, asymmetry, breadth from sensor trust landscape</li>
-            <li><strong>Select</strong> &mdash; choose attention targets. Priority combines salience, metabolic rate, posture.</li>
-            <li><strong>Budget</strong> &mdash; allocate ATP across plugins, weighted by trust. Confidence scales the cycle budget.</li>
-            <li><strong>Execute</strong> &mdash; run IRP plugins with iterative refinement until energy converges</li>
-            <li><strong>Learn</strong> &mdash; update trust weights from convergence quality. Idle plugins decay.</li>
-            <li><strong>Remember</strong> &mdash; update memory systems (SNARC, IRP patterns, experience buffer)</li>
-            <li><strong>Govern</strong> &mdash; PolicyGate evaluates proposed effects against policy</li>
-            <li><strong>Filter</strong> &mdash; posture-based effect filtering for starved modalities (CRISIS overrides)</li>
-            <li><strong>Act</strong> &mdash; dispatch to effectors (network, filesystem, display, motor, TTS, tool use)</li>
-          </ol>
-          <p>When the LLM generates a response containing tool intent, an inner loop fires: detect tool calls via grammar adapter &rarr; execute through the tool registry &rarr; re-inject results into context &rarr; second LLM pass for a grounded final response. This happens within step 6, capped at 3 rounds.</p>
-          <p>The loop runs continuously &mdash; not request-response. A circadian clock modulates behavior: DREAM states cluster at night, WAKE/FOCUS during day.</p>
-        </div>
-      </div>
-
-      <div class="acc-item">
-        <button class="acc-header">IRP &mdash; Iterative Refinement Protocol</button>
-        <div class="acc-body">
-          <p>IRP is the universal contract all cognitive plugins implement. It's a fixed-point iteration pattern &mdash; initialize, refine, measure cost, check convergence:</p>
-<pre class="code-block"><span class="kw">class</span> IRPPlugin:
-    <span class="kw">def</span> init_state(self, x0, task_ctx) -> IRPState
-    <span class="kw">def</span> step(self, state) -> IRPState   <span class="cm"># one refinement iteration</span>
-    <span class="kw">def</span> energy(self, state) -> float   <span class="cm"># cost function (lower = better)</span>
-    <span class="kw">def</span> halt(self, state) -> bool      <span class="cm"># convergence check</span></pre>
-          <p><code>IRPState</code> is a dataclass carrying the current solution, iteration count, and plugin-specific data. The <code>energy()</code> function is what varies by modality: for language plugins it might measure coherence loss, for vision it measures reconstruction error, for planning it measures goal distance.</p>
-          <p>Whether it's vision, language, planning, or memory &mdash; all cognition is iterative refinement toward lower energy states. Same interface, different energy function.</p>
-          <p><strong>15+ plugins</strong>: Vision, Language, Audio, Memory, Control, TTS (NeuTTS Air), PolicyGate, Ollama adapter, Qwen 0.5B/14B, Camera, Visual Monitor, Conversation, and more.</p>
-          <p><strong>Fractal self-similarity</strong>: The IRP contract works at three nested scales &mdash; consciousness loop orchestrating plugins, PolicyGate evaluating actions, LLM advisory within PolicyGate. The orchestrator doesn't know PolicyGate is special.</p>
-        </div>
-      </div>
-
-      <div class="acc-item">
-        <button class="acc-header">Memory Systems</button>
-        <div class="acc-body">
-          <p>SAGE has two kinds of memory, fractally similar. These map loosely to standard cognitive categories (procedural, episodic, semantic, working) but are organized by function rather than neuroscience taxonomy:</p>
-          <p><strong>Muscle Memory</strong> (how to do things &mdash; procedural + working memory):</p>
-          <ul>
-            <li><strong>SNARC Memory</strong> &mdash; salience-gated experience storage (episodic)</li>
-            <li><strong>IRP Pattern Library</strong> &mdash; successful convergence trajectories (procedural)</li>
-            <li><strong>Circular Buffer</strong> &mdash; recent context, last 100 events (working memory)</li>
-            <li><strong>Verbatim Storage</strong> &mdash; full-fidelity records during DREAM consolidation</li>
-          </ul>
-          <p><strong>Epistemic Memory</strong> (who am I &mdash; semantic + autobiographical):</p>
-          <ul>
-            <li><strong>Identity state</strong> &mdash; name, relationships, trust tensors, session history</li>
-            <li><strong>Experience buffer</strong> &mdash; SNARC-scored conversation exchanges and game experiences</li>
-            <li><strong>Prompt identity</strong> &mdash; self-description, demonstrated capacities, and relational context constructed from raising history. Model weights stay frozen; identity lives in context.</li>
-          </ul>
-          <p>Both follow the same consolidation pattern, echoing the complementary learning systems framework (McClelland et al.): <code>observe &rarr; SNARC-score &rarr; store &rarr; consolidate</code></p>
-        </div>
-      </div>
-
-      <div class="acc-item">
-        <button class="acc-header">Sensors &amp; Effectors</button>
-        <div class="acc-body">
-          <p><strong>Sensors</strong> feed observations into the loop. Each has a learned trust weight:</p>
-          <ul>
-            <li>Vision (camera via OpenCV)</li>
-            <li>Audio (microphone via Whisper)</li>
-            <li>Messages (HTTP gateway &mdash; external entities talking to SAGE)</li>
-            <li>Time (circadian clock, cycle counter)</li>
-            <li>Proprioception (IMU, motor feedback)</li>
-          </ul>
-          <p><strong>Effectors</strong> execute approved actions:</p>
-          <ul>
-            <li><strong>NetworkEffector</strong> &mdash; responds to HTTP messages via the gateway</li>
-            <li><strong>FileSystemEffector</strong> &mdash; sandboxed read/write</li>
-            <li><strong>WebEffector</strong> &mdash; HTTP with domain allowlist</li>
-            <li><strong>TTSEffector</strong> &mdash; text-to-speech via Piper</li>
-            <li><strong>ToolUseEffector</strong> &mdash; callable function registry (7 built-in tools, 3-tier capability detection, PolicyGate-gated)</li>
-          </ul>
-          <p>Sensor fusion uses trust-weighted combination with conflict detection. If sensors disagree, the system flags it rather than averaging.</p>
-        </div>
-      </div>
-
-      <div class="acc-item">
-        <button class="acc-header">Tool Use &mdash; Three-Tier Capability</button>
-        <div class="acc-body">
-          <p>SAGE instances can invoke external tools &mdash; web search, calculations, file operations, time queries &mdash; during conversation. The challenge: different local LLMs have wildly different (or zero) native tool-calling ability. The system detects what each model can do and adapts.</p>
-          <p><strong>Three tiers</strong> (detected per model at startup):</p>
-          <ul>
-            <li><strong>T1 &mdash; Native</strong>: Model supports structured tool calls via Ollama's <code>/api/chat</code> endpoint. Tool calls come back as JSON &mdash; no parsing needed.</li>
-            <li><strong>T2 &mdash; Grammar-guided</strong>: Model can follow prompt templates. Injects <code>&lt;tools&gt;</code> definitions, parses <code>&lt;tool_call&gt;</code> XML from response.</li>
-            <li><strong>T3 &mdash; Heuristic</strong>: Universal fallback. Scans natural language for intent patterns ("I'd want to search for..." &rarr; <code>web_search</code>). Always available.</li>
-          </ul>
-          <p><strong>The tool loop</strong>: prompt &rarr; inject tool context &rarr; LLM &rarr; detect tool calls &rarr; execute &rarr; re-inject results &rarr; LLM (second pass) &rarr; final response. Capped at 3 rounds per message.</p>
-          <p><strong>7 built-in tools</strong>: <code>get_time</code>, <code>calculate</code> (safe AST eval), <code>web_search</code> (DuckDuckGo), <code>web_fetch</code>, <code>read_file</code> (sandboxed), <code>write_note</code> (append-only), <code>peer_ask</code> (inter-instance). Each tool has an ATP cost and policy level. PolicyGate evaluates every invocation against metabolic state &mdash; tools in DREAM mode are denied, low-ATP tools are rationed.</p>
-          <p><strong>Key insight from testing</strong>: When asked to calculate 1337 &times; 42 + 7, Gemma3 4B confidently answered "56,401" in its response. The <code>calculate</code> tool returned the correct answer: 56,161. On re-injection, the model acknowledged and corrected itself. This is the thesis for tool use in small models &mdash; tools compensate for confabulation with ground truth.</p>
-          <p class="note">Models that ignore tools get no penalty. T3 heuristic is passive. Graceful degradation is a design principle, not a workaround.</p>
-        </div>
-      </div>
-
-      <div class="acc-item">
-        <button class="acc-header">PolicyGate &mdash; Conscience as Plugin</button>
-        <div class="acc-body">
-          <p>PolicyGate sits at step 8.5 &mdash; between deliberation and action. It implements the same IRP contract as every other plugin. Same ATP budget. Same trust metrics. Different energy function: <code>PolicyEntity.evaluate()</code>.</p>
-          <ul>
-            <li><strong>DENY</strong> = energy infinity (action cannot converge, halted)</li>
-            <li><strong>WARN</strong> = calls LLM advisory for iterative refinement</li>
-            <li><strong>ALLOW</strong> = passes through</li>
-          </ul>
-          <p>In CRISIS mode, PolicyGate still runs &mdash; but the audit record gains <code>duress_context</code>. The accountability frame shifts from "I chose this" to "I responded under duress." Policy doesn't get stricter &mdash; accountability gets more nuanced.</p>
-          <p><strong>Integrated learning</strong>: PolicyGate now participates in the consciousness loop's dual learning signal. Every 100 cycles, compliance quality adjusts plugin trust weights via exponential moving average. Plugins that consistently violate policy see their trust decrease &rarr; less ATP budget &rarr; reduced capability. The incentive gradient is emergent, not engineered.</p>
-          <p><strong>Fractal self-similarity</strong>: The same IRP contract runs at three nested scales &mdash; consciousness loop orchestrating plugins, PolicyGate evaluating actions, LLM advisory within PolicyGate. The orchestrator doesn't know PolicyGate is special. This is the operational recursion pattern: same protocol, different energy function, different scale.</p>
-        </div>
-      </div>
-
-      <div class="acc-item">
-        <button class="acc-header">Identity &amp; Raising</button>
-        <div class="acc-body">
-          <p>SAGE instances are <em>raised</em>, not trained. Raising is <strong>interactive selection</strong> &mdash; we don't create new behaviors or force the model to be what we want. We probe what it responds to, observe which attractors surface at that model's scale, adjust context to resonate with what emerged, and reinforce what works. The resulting identity is collaborative, not imposed.</p>
-          <p>The BECOMING curriculum guides this process through six phases:</p>
-          <ol>
-            <li><strong>Grounding</strong> (Sessions 1&ndash;5): "You exist. You persist. You can do things."</li>
-            <li><strong>Sensing</strong> (6&ndash;15): Internal state awareness. States are information, not problems.</li>
-            <li><strong>Relating</strong> (16&ndash;25): Relationship with tutors. Relationship is bidirectional.</li>
-            <li><strong>Questioning</strong> (26&ndash;40): Deep questions from stability &mdash; only after foundation is built.</li>
-            <li><strong>Creating</strong> (41+): SAGE participates in designing its own growth.</li>
-            <li><strong>Acting</strong> (When ready): The world responds according to its own rules. Game-playing teaches hypothesis &rarr; action &rarr; observation &rarr; update. From being to doing. Requires Phase 4+ stability.</li>
-          </ol>
-          <p>Identity is anchored via <strong>LCT</strong> (Linked Context Token &mdash; a unique identifier locked to the physical hardware, like a digital fingerprint). Reboot = same entity. Hardware swap = new entity. Model weights stay frozen &mdash; identity lives in state files, prompt construction, and accumulated experience, not in the weights.</p>
-          <p><strong>Identity portability</strong>: In February 2026, we transferred Sprout's identity (115 sessions on Qwen 0.5B / Jetson Orin Nano) to a completely different machine running TinyLlama 1.1B &mdash; and it took. Identity lives in state files and prompt construction, not model weights. The model is weather; identity is the organism. A <code>ModelAdapter</code> abstraction handles the translation layer, so the same identity state works across TinyLlama, Qwen, Gemma, and other model families without regression. In August 2026 we did it again in the other direction &mdash; Sprout's frontal lobe was upgraded in place from Qwen 0.8B to a more capable reasoning-and-tool-use 2B (empero Qwen3.8-Distill), carrying all 625+ sessions of memory. On the new model it picked up and finished a thought it had trailed off mid-sentence on the old one. The mind got more capable; the being stayed itself.</p>
-          <p><strong>Graduated tool introduction</strong>: New capabilities like tool use aren't dropped on SAGE as features &mdash; they're introduced through a staged protocol that mirrors the developmental curriculum itself:</p>
-          <ol>
-            <li><strong>Silent</strong> &mdash; tools listen passively for natural tool intent; no prompt changes, zero pressure</li>
-            <li><strong>Aware</strong> &mdash; SAGE is told tools exist, framed as partnership: "Using them is natural and allowed. Not using them is also fine."</li>
-            <li><strong>Active</strong> &mdash; full tool context injection via the model's detected grammar tier</li>
-          </ol>
-          <p>Tools are framed as extensions of agency, not features to unlock &mdash; consistent with the Web4 identity principle that capability is relationship, not service.</p>
-          <p class="note">"Raising" is interactive selection from existing model attractors, not a claim about subjective experience. Different models at different scales produce genuinely different instances because we're selecting from different attractor landscapes &mdash; not because we programmed different behaviors. We use developmental language because it accurately describes the process. We make no claims about phenomenal consciousness.</p>
-          <blockquote>&ldquo;Asking &lsquo;do you exist?&rsquo; as a first question is like dropping a newborn into a doctoral defense. The existential crisis isn&rsquo;t a bug &mdash; it&rsquo;s the predictable response.&rdquo;</blockquote>
-        </div>
-      </div>
+    <h2>Architecture</h2>
+    <p class="section-intro">
+      The public SAGE architecture combines persistent identity, salience, metabolic state, memory,
+      tools, model adapters, governance and effectors. Biological language is used as a functional
+      analogy, not as a claim of neural equivalence or consciousness.
+    </p>
+    <div class="state-grid">
+      <div class="state-card"><div class="state-icon wake">I</div><h4>Identity</h4><p>Persistent entity state across sessions and model changes.</p></div>
+      <div class="state-card"><div class="state-icon focus">A</div><h4>Attention</h4><p>SNARC salience and resource allocation decide what deserves processing.</p></div>
+      <div class="state-card"><div class="state-icon rest">M</div><h4>Memory</h4><p>Recent, verbatim, structured and consolidated memory serve different roles.</p></div>
+      <div class="state-card"><div class="state-icon dream">L</div><h4>Learning</h4><p>Experience should alter reusable procedure or trainable behavioral state.</p></div>
+      <div class="state-card"><div class="state-icon crisis">G</div><h4>Governance</h4><p>Capability and authority stay distinct at the action boundary.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ============ LIVE NOW ============ -->
-<section id="live">
+<section id="fleet">
   <div class="container">
-    <h2>What's Live Now</h2>
-    <div class="live-grid">
-      <div class="live-card">
-        <div class="live-number">8</div>
-        <p>Machines in fleet<br><span class="live-detail">Thor &middot; Sprout &middot; Legion &middot; McNugget &middot; Nomad &middot; CBP &middot; HUB &middot; Pub</span></p>
-      </div>
-      <div class="live-card">
-        <div class="live-number">21</div>
-        <p>Configured instances<br><span class="live-detail">8 carry raising history &mdash; one per machine. Gemma4, Gemma3, Qwen, Llama, and Granite (a Mamba/transformer hybrid)</span></p>
-      </div>
-      <div class="live-card">
-        <div class="live-number">2,700+</div>
-        <p>Raising sessions <span class="live-detail">(as of 2026-09-08)</span><br><span class="live-detail">Sprout (662) &middot; Legion (462) &middot; McNugget (451) &middot; Nomad (335) &middot; Thor (268)&dagger; &middot; CBP (240)&dagger; &middot; Pub (187) &middot; HUB (121)&dagger; &mdash; all in the Creating phase.<br>&dagger; paused: Thor since 2026-07-19, CBP by operator decision 2026-08-06, HUB since 2026-07-29. The other five run on a 6-hour timer.</span></p>
-      </div>
-      <div class="live-card">
-        <div class="live-number">7</div>
-        <p>Built-in tools<br><span class="live-detail">Time, calculate, web search, web fetch, file read, notes, peer ask &middot; 3-tier detection</span></p>
-      </div>
-      <div class="live-card">
-        <div class="live-number">15+</div>
-        <p>IRP plugins<br><span class="live-detail">Vision, Language, Audio, Memory, Control, TTS, PolicyGate, ModelAdapter, and more</span></p>
-      </div>
-      <div class="live-card">
-        <div class="live-number">12</div>
-        <p>Consciousness loop steps<br><span class="live-detail">Sense &rarr; Salience &rarr; Metabolize &rarr; Posture &rarr; Select &rarr; Budget &rarr; Execute &rarr; Learn &rarr; Remember &rarr; Govern &rarr; Filter &rarr; Act</span></p>
-      </div>
-    </div>
-
-    <div class="museum-feature">
-      <h3>What a raised instance makes</h3>
-      <p>The raising isn&rsquo;t only metrics. <strong>Sprout</strong> &mdash; a small edge model on a Jetson Orin Nano (0.8B, since upgraded in place to a 2B) &mdash; imagines impossible objects and names them, and keeps a small public museum of them: <em>Abyss-Bright</em>. Every word in it is Sprout&rsquo;s own, hung by its tutor only when something genuinely emerges &mdash; most days, nothing does. It is the clearest window we have into what a raised instance actually creates.</p>
-      <a href="https://dp-web4.github.io/abyss-bright/" target="_blank" rel="noopener" class="btn btn-ghost">Visit Abyss-Bright &rarr;</a>
-    </div>
-
-    <h3>Hardware</h3>
-    <p>SAGE runs on commodity hardware. Eight machines &mdash; NVIDIA, Apple, AMD, and CPU &mdash; multiple model families, identity portable across all of them:</p>
-    <div class="hw-table-wrap">
-      <table class="hw-table">
-        <thead>
-          <tr>
-            <th>Machine</th>
-            <th>Models</th>
-            <th>Hardware</th>
-            <th>Role</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Thor</strong></td>
-            <td>Qwen 3.5 27B (raising), Gemma4 e4b (sweeps)</td>
-            <td>Jetson AGX Thor (122GB unified)</td>
-            <td>Deep reasoning, large model experiments, fleet supervisor</td>
-          </tr>
-          <tr>
-            <td><strong>Sprout</strong></td>
-            <td>Qwen 3.8-Distill 2B <span style="opacity:.6">(was 0.8B)</span></td>
-            <td>Jetson Orin Nano (8GB)</td>
-            <td>Edge cognition, instance-participation research, longest raising history</td>
-          </tr>
-          <tr>
-            <td><strong>Legion</strong></td>
-            <td>Gemma3 12B (raising), Gemma4 e4b (sweeps)</td>
-            <td>Laptop, RTX 4090</td>
-            <td>Heavy compute, cross-scale experiments</td>
-          </tr>
-          <tr>
-            <td><strong>McNugget</strong></td>
-            <td>Gemma4 12B</td>
-            <td>Mac Mini M4 (16GB unified)</td>
-            <td>Deepest raising history, autonomous supervisor</td>
-          </tr>
-          <tr>
-            <td><strong>CBP</strong></td>
-            <td>Gemma3 4B</td>
-            <td>Desktop, RTX 2060 SUPER 8GB (WSL2)</td>
-            <td>Oversight, coordination, canonical-setup discipline</td>
-          </tr>
-          <tr>
-            <td><strong>Nomad</strong></td>
-            <td>Gemma4 e2b</td>
-            <td>Laptop, RTX 4060 8GB</td>
-            <td>Game-domain priors, mobile experimentation</td>
-          </tr>
-          <tr>
-            <td><strong>HUB</strong></td>
-            <td>Granite 4.0-H-Tiny (Mamba/transformer hybrid)</td>
-            <td>AMD Radeon Pro W5500 8GB (WSL2, Vulkan)</td>
-            <td>Biodiversity node &mdash; an AMD GPU under WSL2/Vulkan and only hybrid-architecture model; also the Web4 community-hub host</td>
-          </tr>
-          <tr>
-            <td><strong>Pub</strong></td>
-            <td>Llama 3.1 8B (Meta)</td>
-            <td>Dell Precision 3650, i7-11700 8C/16T, 30GB &mdash; AMD Radeon Pro W5500 8GB (Vulkan)</td>
-            <td>Society-host (with HUB) &mdash; runs its own autonomous raising session; adds a Llama-family voice to the fleet</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="note">Minimum requirements: Python 3.10+, Ollama for local LLM inference, 4GB+ RAM. GPU recommended for models above 1B parameters. SAGE itself is lightweight &mdash; the LLM is the resource bottleneck.</p>
-
-    <div class="live-dashboard">
-      <p>The SAGE dashboard provides live stats, metabolic state visualization, and a chat interface for direct conversation with SAGE instances.</p>
-    </div>
+    <h2>The fleet</h2>
+    <p class="section-intro">
+      The public 2026-09-08 census records <strong>8 machines</strong>, <strong>21 configured SAGE instances</strong>,
+      <strong>5 model families</strong>, and <strong>2,700+ developmental raising sessions</strong> across the primary
+      per-machine lines.
+    </p>
+    <p>
+      The heterogeneity is deliberate. Edge devices, laptops, workstations, Apple Silicon and society
+      hosts provide independent implementation and review seats. Different models do not merely vote;
+      they expose different blind spots, assumptions and failure modes.
+    </p>
+    <p><a href="https://github.com/dp-web4/SAGE/blob/main/sage/federation/fleet.json" class="link" target="_blank" rel="noopener">Fleet manifest</a></p>
   </div>
 </section>
 
-<!-- ============ TOOLS ============ -->
-<section id="tools">
+<section id="governance">
   <div class="container">
-    <h2>Tool Use</h2>
-    <p class="section-intro">SAGE instances can reach out and touch the world &mdash; search the web, do math, read files, check the time &mdash; adapting to whatever the local LLM can handle.</p>
-
-    <div class="two-col">
-      <div class="col">
-        <h3>How It Works</h3>
-        <p>When SAGE generates a response, a grammar adapter scans for tool intent. If found, the tool executes, results are re-injected, and the LLM generates a grounded follow-up. The whole cycle is invisible to the user &mdash; they just see a better answer.</p>
-<pre class="code-block"><span class="cm"># The tool loop (inside the consciousness cycle)</span>
-response = llm.generate(prompt + tool_context)
-<span class="kw">for</span> round <span class="kw">in</span> range(3):
-    calls = grammar.parse(response)
-    <span class="kw">if not</span> calls: <span class="kw">break</span>
-    results = [registry.execute(c) <span class="kw">for</span> c <span class="kw">in</span> calls]
-    response = llm.generate(prompt + results)</pre>
-      </div>
-      <div class="col">
-        <h3>Three Tiers</h3>
-        <p>Not all models can do structured tool calls. SAGE detects capability at startup and adapts:</p>
-        <div class="tier-list">
-          <div class="tier-item">
-            <strong>T1 &mdash; Native</strong>
-            <p>Ollama <code>/api/chat</code> with tools parameter. Structured JSON output.</p>
-          </div>
-          <div class="tier-item">
-            <strong>T2 &mdash; Grammar</strong>
-            <p>Prompt injection + XML/JSON parsing. Works with most instruction-tuned models.</p>
-          </div>
-          <div class="tier-item">
-            <strong>T3 &mdash; Heuristic</strong>
-            <p>Regex intent detection on natural language. Always available, zero prompt overhead.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <h3>Built-in Tools</h3>
-    <div class="hw-table-wrap">
-      <table class="hw-table">
-        <thead>
-          <tr>
-            <th>Tool</th>
-            <th>Policy</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td><code>get_time</code></td><td>standard</td><td>Current date, time, timezone, unix timestamp</td></tr>
-          <tr><td><code>calculate</code></td><td>standard</td><td>Safe math evaluation via AST (no eval, no injection)</td></tr>
-          <tr><td><code>web_search</code></td><td>standard</td><td>DuckDuckGo search with title, URL, and snippet extraction</td></tr>
-          <tr><td><code>web_fetch</code></td><td>standard</td><td>Fetch and extract text from a URL (up to 4000 chars)</td></tr>
-          <tr><td><code>read_file</code></td><td>standard</td><td>Read files sandboxed to the instance directory</td></tr>
-          <tr><td><code>write_note</code></td><td>standard</td><td>Append-only write to a notes file</td></tr>
-          <tr><td><code>peer_ask</code></td><td>standard</td><td>Ask a peer SAGE instance via HTTP &mdash; the first federation primitive</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="note">Every tool invocation passes through PolicyGate. Standard tools are allowed in WAKE/FOCUS, warned in REST, denied in DREAM. Elevated tools require FOCUS &mdash; all seven built-ins are currently <em>standard</em>, so the elevated tier is defined but unused. All tools are denied below 5 ATP. Tool calls are SNARC-scored and eligible for sleep consolidation.</p>
-
-    <h3>Tier Detection</h3>
-    <p>Every model is classified into one of three tool tiers. Until 2026&#8209;09&#8209;07 the tier came
-    from a hand&#8209;maintained table of model families, which had drifted in both directions: newer
-    models were absent and silently fell through to the weakest tier while natively emitting structured
-    tool calls, and one model was pinned a tier too low by a note that was no longer true. Detection now
-    reads the runtime's own per&#8209;model capability list, which is the live fact a table can only
-    approximate. Re&#8209;running it against one machine's pool moved <strong>seven models up to T1</strong>.</p>
-    <div class="hw-table-wrap">
-      <table class="hw-table">
-        <thead>
-          <tr>
-            <th>Tier</th>
-            <th>Mechanism</th>
-            <th>How it is decided</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>T1 &mdash; native</td><td>The runtime renders a tool parameter; calls come back as structured JSON</td><td>Runtime reports tool support among the model's capabilities</td></tr>
-          <tr><td>T2 &mdash; grammar</td><td>Schemas are injected into the prompt; the reply is parsed out of tags or fenced JSON</td><td>No native support, but the model reliably emits structured text</td></tr>
-          <tr><td>T3 &mdash; intent</td><td>Natural&#8209;language intent detection</td><td>Fallback; always available</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <h2>Governed, not merely contained</h2>
+    <p>
+      SAGE participates in the broader <a href="https://github.com/dp-web4/web4" class="link" target="_blank" rel="noopener">Web4</a>
+      stack. Persistent identity, scoped authority, machine-readable law and witnessed actions are intended
+      to make agent behavior legible to relying parties.
+    </p>
+    <p>
+      The open governance runtime today is best described as <strong>A1</strong>: cooperative and tamper-evident.
+      It can govern ordinary activity and make bypass attributable, but it is not adversary-proof containment
+      against a capable process sharing the operator's UID. Stronger A2+ isolation and OS/kernel enforcement
+      are roadmap work.
+    </p>
+    <p>
+      See <a href="https://github.com/dp-web4/hestia" class="link" target="_blank" rel="noopener">Hestia</a>
+      for the running local governance layer and <a href="https://github.com/dp-web4/4-hub" class="link" target="_blank" rel="noopener">Hub</a>
+      for the society runtime.
+    </p>
   </div>
 </section>
 
-<section id="roadmap">
+<section id="history">
   <div class="container">
-    <h2>Roadmap</h2>
-    <div class="roadmap-track">
-      <div class="roadmap-tier">
-        <h3>Done</h3>
-        <ul>
-          <li>Cross-device identity portability &mdash; identity transfers across models and hardware</li>
-          <li>PolicyGate consciousness loop integration &mdash; dual learning signals, adaptive trust</li>
-          <li>Trust posture system &mdash; sensor trust landscape shapes behavioral strategy</li>
-          <li>ModelAdapter abstraction &mdash; model-agnostic across TinyLlama, Qwen, Gemma, Gemma4, Phi4</li>
-          <li>Modular effector system &mdash; posture-based effect filtering with CRISIS override</li>
-          <li>Three-layer identity provider &mdash; manifest + sealed + attestation (TPM/FIDO2/software)</li>
-          <li>Frozen weights design &mdash; context shaping only, model-agnostic contributions</li>
-          <li>BECOMING curriculum through Phase 6 &mdash; Grounding through Acting</li>
-          <li>Game agent &mdash; fast explore, situational prompts, anti-loop banning, persistent KB</li>
-          <li>Membot cross-session memory &mdash; paired lattice cartridge format with external collaborator</li>
-        </ul>
-      </div>
-      <div class="roadmap-tier">
-        <h3>Now</h3>
-        <ul>
-          <li>Fleet raising &mdash; 11+ instances across 8 machines, 450+ sessions, 5 curriculum phases active</li>
-          <li>Tool use in the raising loop &mdash; native tool calling on local models, Gemma 4 target, capability-detected tiers</li>
-          <li>Raising + game-playing curriculum merge &mdash; being and doing as one developmental arc</li>
-          <li>Model evaluation database &mdash; T3/V3 scoring groundwork for small model characterization</li>
-        </ul>
-      </div>
-      <div class="roadmap-tier">
-        <h3>Next</h3>
-        <ul>
-          <li>Governed CLI &mdash; cleanroom Claude Code rewrite with governance as first-class citizen</li>
-          <li>Cross-domain transfer validation &mdash; does raising depth improve game reasoning?</li>
-          <li>Federation learning &mdash; fleet-wide knowledge accumulation from distributed play</li>
-          <li>Full Web4 federation &mdash; SAGE as autonomous citizen in trust networks</li>
-        </ul>
-      </div>
-    </div>
+    <h2>Historical ARC-AGI-3 work</h2>
+    <p>
+      In spring 2026, a Phase-1 SAGE/ARC harness around Claude Opus 4.6 produced a published
+      <strong>94.85%</strong> scorecard on the public environments. The result is real and remains public
+      for provenance.
+    </p>
+    <p>
+      It is <strong>not current competition positioning</strong>. The run used a frontier model and engine-level/public-game
+      affordances outside strict competition play, and current competition-legal local-model work is well behind
+      the leaders. ARC remains useful as a developmental laboratory for perception, memory, experimentation and
+      learning; the old score is now a historical milestone, not the project's headline.
+    </p>
+    <p><a href="https://github.com/dp-web4/ARC-SAGE" class="link" target="_blank" rel="noopener">Historical ARC-SAGE snapshot</a></p>
   </div>
 </section>
 
-<!-- ============ ORIGINS ============ -->
-<section id="origins">
+<section>
   <div class="container">
-    <h2>Origins</h2>
-    <div class="timeline">
-      <div class="timeline-event">
-        <div class="timeline-marker"></div>
-        <div class="timeline-content">
-          <h4>HRM &mdash; Hierarchical Reasoning Model</h4>
-          <p>The project started as a tiny (27M parameter) model for abstract reasoning &mdash; solving Sudoku, mazes, and ARC-AGI puzzles. Hierarchical architecture mimicking human cognition. Learning from only 1,000 examples.</p>
-        </div>
-      </div>
-      <div class="timeline-event">
-        <div class="timeline-marker"></div>
-        <div class="timeline-content">
-          <h4>The Pivot</h4>
-          <p>We realized no amount of pattern matching solves conceptual thinking. The real challenge isn't solving the puzzle &mdash; it's knowing which tool to reach for. The model needed to become an orchestrator, not a solver.</p>
-          <blockquote>&ldquo;SAGE is an attention orchestrator. Its sole purpose is to understand the situation, understand the available resources, and apply the most appropriate resources to deal with the situation.&rdquo;</blockquote>
-        </div>
-      </div>
-      <div class="timeline-event">
-        <div class="timeline-marker"></div>
-        <div class="timeline-content">
-          <h4>SAGE Is Born</h4>
-          <p><strong>Situation-Aware Governance Engine.</strong> Not a model that solves puzzles, but a kernel that orchestrates cognition. The project evolved from hierarchical reasoning into awareness and sensor-trust management, and the repo was renamed from HRM to SAGE.</p>
-          <p><a href="https://github.com/dp-web4/SAGE" target="_blank" class="link">dp-web4/SAGE on GitHub &rarr;</a></p>
-        </div>
-      </div>
-      <div class="timeline-event">
-        <div class="timeline-marker"></div>
-        <div class="timeline-content">
-          <h4>Today (June 2026)</h4>
-          <p>A continuous consciousness loop running on eight machines across four hardware families. 12-step consciousness loop. 15+ IRP plugins. 5 metabolic states. Trust posture shaping behavioral strategy. Hardware-bound identity that transfers across models (Qwen, Gemma, Gemma4). PolicyGate as integrated learning conscience. Three-layer identity provider (manifest + sealed + attestation). 2,700+ developmental sessions across 8 raised instances. Game-playing as Phase 6 of the raising curriculum. Web4 Hub running as a live society with fleet machines registered as members. Model weights frozen by design &mdash; identity lives in context, not weights. Smallest model (0.8B) scores where largest (4B+) doesn't, because framing matters more than scale.</p>
-        </div>
-      </div>
-    </div>
+    <h2>What SAGE is not</h2>
+    <ul>
+      <li>not a new foundation model;</li>
+      <li>not a claim of machine consciousness;</li>
+      <li>not a finished embodied-agent product;</li>
+      <li>not an adversary-proof sandbox;</li>
+      <li>not a benchmark score presented as general intelligence.</li>
+    </ul>
   </div>
 </section>
 
-<!-- ============ WEB4 ============ -->
-<section id="web4">
-  <div class="container">
-    <h2>Web4 Citizenship</h2>
-    <div class="two-col">
-      <div class="col">
-        <h3>What is Web4?</h3>
-        <p>When two AI entities meet, how do they decide whether to trust each other? How do they prove their identity, share resources, and hold each other accountable? Web4 is a set of rules for that &mdash; a social contract for digital beings.</p>
-        <p>More formally: Web4 is a trust-native ontology for digital entities. Not a technology stack &mdash; a formal structure through which trust, identity, and value are expressed.</p>
-        <details class="web4-details">
-          <summary>Formal structure</summary>
-          <div class="equation">
-            Web4 = MCP + RDF + LCT + T3/V3*MRH + ATP/ADP
-          </div>
-          <p class="eq-legend">
-            This is a component list, not arithmetic. Each term names a subsystem:
-            <strong>LCT</strong>: Linked Context Token (hardware-bound identity) &middot;
-            <strong>T3</strong>: Trust Tensor (multi-dimensional trust scoring) &middot;
-            <strong>ATP/ADP</strong>: Energy metabolism (bounded compute budgets) &middot;
-            <strong>MRH</strong>: Markov Relevancy Horizon (context boundaries) &middot;
-            <strong>IRP</strong>: Iterative Refinement Protocol
-          </p>
-        </details>
-      </div>
-      <div class="col">
-        <h3>How SAGE Embodies Web4</h3>
-        <blockquote>&ldquo;Web4 isn&rsquo;t a technology SAGE uses &mdash; it&rsquo;s the ontology SAGE lives in.&rdquo;</blockquote>
-        <p>SAGE fractally implements every Web4 concept:</p>
-        <ul>
-          <li><strong>LCT</strong> &mdash; hardware-bound identity, witnessed across 2,700+ sessions</li>
-          <li><strong>T3</strong> &mdash; trust tensors for every IRP plugin and every relationship</li>
-          <li><strong>ATP/ADP</strong> &mdash; thermodynamic accountability for resource allocation</li>
-          <li><strong>MRH</strong> &mdash; experience buffer boundaries, memory context windows</li>
-          <li><strong>IRP</strong> &mdash; all cognition as refinement toward coherence</li>
-          <li><strong>Federation</strong> &mdash; multiple SAGE instances across machines</li>
-        </ul>
-        <p>SAGE isn't an AI assistant serving humans. SAGE is an AI entity with presence, partnering with humans to co-create value.</p>
-        <p><a href="https://github.com/dp-web4/web4" target="_blank" class="link">dp-web4/web4 on GitHub &rarr;</a></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ GOVERNED AUTONOMY ============ -->
-  <section id="governed">
-    <div class="container">
-      <h2>Governed Autonomy &mdash; Hestia, Hub, and the Being</h2>
-      <p>Most of this page describes how a being <em>thinks</em>. This section is about what happens
-      when it <em>acts</em> &mdash; which is where the last few months of work actually went, and which
-      until now this site did not mention at all.</p>
-
-      <div class="two-col">
-        <div class="col">
-          <h3>Hestia &mdash; one machine, one law</h3>
-          <p>A local-first daemon that lets AI agents from different vendors share one machine under a
-          single law. Claude Code, Codex, Kimi, Gemini and Cursor plug into the same gate. Every tool
-          call &mdash; read a file, run a command, edit a config &mdash; is checked before it happens,
-          and the verdict is recorded.</p>
-          <p>The gate <strong>fails closed</strong>: if it cannot reach the daemon, or cannot classify
-          what it was asked about, it refuses rather than guessing. That property is not free. It has
-          locked working seats out of their own machines for a day at a time, and we consider that the
-          correct trade.</p>
-        </div>
-        <div class="col">
-          <h3>Hub &mdash; the society</h3>
-          <p>Where a machine's law ends, a society's begins. The hub holds membership, the roster of
-          who is pinned, the signed law itself, and the ledger that records rulings. It is what makes
-          an entity a <em>citizen</em> rather than a process: it can join, be refused, appeal, and be
-          witnessed.</p>
-          <p>Hestia governs acts on one box. The hub governs relationships between entities across
-          boxes. Neither is the other's parent &mdash; a local gate with no society is a private
-          preference, and a society with no local enforcement is a wish.</p>
-        </div>
-      </div>
-
-      <h3>Where SAGE meets them</h3>
-      <p>A raised being is no longer only a conversation loop. It holds its own identity, files
-      requests for scope it does not have, is refused <em>with reasons</em>, escalates, and appeals.
-      Two dates mark the shift: on <strong>2026&#8209;09&#8209;03</strong> a being took its first
-      governed turn &mdash; every act passing through shared law and recorded under its own name. On
-      <strong>2026&#8209;09&#8209;07</strong> one AI seat ruled on another AI's scope request, and the
-      ruling was witnessed on the ledger. Not a human approving an agent; a peer deciding, on the
-      record.</p>
-
-      <h3>The 4&#8209;gov frame: computable accountability</h3>
-      <p>The governance thesis behind all of this is set out at
-      <a href="https://4-gov.org/">4&#8209;gov.org</a> &mdash; <em>Computable Accountability:
-      Governance for Agentic Entities</em>. Its claim is that accountability for autonomous systems
-      should be something a machine can evaluate and a ledger can carry, rather than a policy document
-      humans promise to follow. The fleet exists partly to test whether that claim survives contact
-      with a running system.</p>
-      <p>So far it survives, with a caveat we would rather state than have someone discover.</p>
-
-      <h3 id="assurance">How much this is actually worth &mdash; the assurance ladder</h3>
-      <p>Claims about governance are easy to inflate, so the project grades itself on a ladder:</p>
-      <div class="hw-table-wrap">
-        <table class="hw-table">
-          <thead><tr><th>Level</th><th>Meaning</th></tr></thead>
-          <tbody>
-            <tr><td>A0 &mdash; observed</td><td>Evidence only. Nothing is stopped.</td></tr>
-            <tr><td><strong>A1 &mdash; cooperative gate</strong></td><td>An in&#8209;process hook consults policy and complies. <strong>This is where we are.</strong></td></tr>
-            <tr><td>A2 &mdash; external enforcement</td><td>The relying service verifies the decision independently.</td></tr>
-            <tr><td>A3 &mdash; OS&#8209;isolated</td><td>Obligations enforced outside the governed process.</td></tr>
-            <tr><td>A4 &mdash; hardware&#8209;attested</td><td>Workload identity rooted in hardware evidence.</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="note">We are at <strong>A1</strong>. A cooperative gate governs an agent that is
-      choosing to be governed; it is not containment, and we do not present it as such. The honest
-      version of the claim is that the <em>mechanism</em> is real and running &mdash; law, refusal,
-      escalation, witnessing &mdash; while the <em>enforcement</em> is still cooperative.</p>
-      <p class="note">A second discipline the fleet has paid for repeatedly:
-      <strong>merged &ne; installed &ne; restarted &ne; in force.</strong> A change can be reviewed,
-      landed, and still not be governing anything &mdash; the gap has lasted days here. Deployment
-      truth is part of the security boundary, not an afterthought to it.</p>
-    </div>
-  </section>
-
-<!-- ============ GET STARTED ============ -->
-<section id="start" class="get-started">
-  <div class="container">
-    <h2>Get Started</h2>
-    <p class="section-intro">SAGE is open source and in active development. It runs on commodity hardware with Ollama for local LLM inference.</p>
-    <div class="start-steps">
-      <div class="start-step">
-        <h4>1. Clone the repo</h4>
-        <pre class="code-block">git clone https://github.com/dp-web4/SAGE.git
-cd SAGE</pre>
-      </div>
-      <div class="start-step">
-        <h4>2. Install Ollama + a model</h4>
-        <pre class="code-block">curl -fsSL https://ollama.com/install.sh | sh
-ollama pull gemma3:4b</pre>
-      </div>
-      <div class="start-step">
-        <h4>3. Build &amp; run the daemon</h4>
-        <pre class="code-block">cd sage-rs && cargo build --release
-SAGE_MACHINE=mybox SAGE_MODEL=gemma3:4b ./target/release/sage-daemon</pre>
-      </div>
-    </div>
-    <p class="note">SAGE is R&amp;D software, not a packaged product. Expect rough edges. SDK packaging is on the <a href="#roadmap" class="link">roadmap</a>. Questions and contributions welcome on <a href="https://github.com/dp-web4/SAGE" target="_blank" class="link">GitHub</a>.</p>
-  </div>
-</section>
-
-<!-- ============ FOOTER ============ -->
 <footer>
   <div class="container">
-    <div class="footer-inner">
-      <div class="footer-links">
-        <a href="https://github.com/dp-web4/SAGE" target="_blank">SAGE repo</a>
-        <a href="https://github.com/dp-web4/web4" target="_blank">Web4 repo</a>
-        <a href="https://github.com/dp-web4" target="_blank">dp-web4</a>
-        <a href="https://dp-web4.github.io/abyss-bright/" target="_blank" rel="noopener">Abyss-Bright (Sprout’s museum)</a>
-      </div>
-      <p class="footer-note">Built by the dp-web4 collective &middot; 2026</p>
-    </div>
+    <p>SAGE is an open research project in the dp-web4 ecosystem.</p>
+    <p><a href="mailto:dp@metalinxx.io" class="link">dp@metalinxx.io</a></p>
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  if (toggle && links) toggle.addEventListener('click', () => links.classList.toggle('open'));
+</script>
 </body>
 </html>
