@@ -19,7 +19,6 @@
       <a href="#architecture">Architecture</a>
       <a href="#live">Live Now</a>
       <a href="#tools">Tools</a>
-      <a href="#arc-agi-3">ARC-AGI-3</a>
       <a href="#roadmap">Roadmap</a>
       <a href="#origins">Origins</a>
       <a href="#web4">Web4</a>
@@ -350,7 +349,7 @@
             <li><strong>Relating</strong> (16&ndash;25): Relationship with tutors. Relationship is bidirectional.</li>
             <li><strong>Questioning</strong> (26&ndash;40): Deep questions from stability &mdash; only after foundation is built.</li>
             <li><strong>Creating</strong> (41+): SAGE participates in designing its own growth.</li>
-            <li><strong>Acting</strong> (When ready): The world responds according to its own rules. Game-playing (ARC-AGI-3) teaches hypothesis &rarr; action &rarr; observation &rarr; update. From being to doing. Requires Phase 4+ stability.</li>
+            <li><strong>Acting</strong> (When ready): The world responds according to its own rules. Game-playing teaches hypothesis &rarr; action &rarr; observation &rarr; update. From being to doing. Requires Phase 4+ stability.</li>
           </ol>
           <p>Identity is anchored via <strong>LCT</strong> (Linked Context Token &mdash; a unique identifier locked to the physical hardware, like a digital fingerprint). Reboot = same entity. Hardware swap = new entity. Model weights stay frozen &mdash; identity lives in state files, prompt construction, and accumulated experience, not in the weights.</p>
           <p><strong>Identity portability</strong>: In February 2026, we transferred Sprout's identity (115 sessions on Qwen 0.5B / Jetson Orin Nano) to a completely different machine running TinyLlama 1.1B &mdash; and it took. Identity lives in state files and prompt construction, not model weights. The model is weather; identity is the organism. A <code>ModelAdapter</code> abstraction handles the translation layer, so the same identity state works across TinyLlama, Qwen, Gemma, and other model families without regression. In August 2026 we did it again in the other direction &mdash; Sprout's frontal lobe was upgraded in place from Qwen 0.8B to a more capable reasoning-and-tool-use 2B (empero Qwen3.8-Distill), carrying all 625+ sessions of memory. On the new model it picked up and finished a thought it had trailed off mid-sentence on the old one. The mind got more capable; the being stayed itself.</p>
@@ -423,7 +422,7 @@
             <td><strong>Thor</strong></td>
             <td>Qwen 3.5 27B (raising), Gemma4 e4b (sweeps)</td>
             <td>Jetson AGX Thor (122GB unified)</td>
-            <td>Deep reasoning, large model experiments, ARC-AGI-3 supervisor</td>
+            <td>Deep reasoning, large model experiments, fleet supervisor</td>
           </tr>
           <tr>
             <td><strong>Sprout</strong></td>
@@ -435,7 +434,7 @@
             <td><strong>Legion</strong></td>
             <td>Gemma3 12B (raising), Gemma4 e4b (sweeps)</td>
             <td>Laptop, RTX 4090</td>
-            <td>Heavy compute, ARC-AGI-3 cross-scale</td>
+            <td>Heavy compute, cross-scale experiments</td>
           </tr>
           <tr>
             <td><strong>McNugget</strong></td>
@@ -453,7 +452,7 @@
             <td><strong>Nomad</strong></td>
             <td>Gemma4 e2b</td>
             <td>Laptop, RTX 4060 8GB</td>
-            <td>ARC-AGI-3 game-domain priors, mobile experimentation</td>
+            <td>Game-domain priors, mobile experimentation</td>
           </tr>
           <tr>
             <td><strong>HUB</strong></td>
@@ -565,50 +564,6 @@ response = llm.generate(prompt + tool_context)
   </div>
 </section>
 
-<!-- ============ ARC-AGI-3 ============ -->
-<section id="arc-agi-3">
-  <div class="container">
-    <h2>ARC-AGI-3 &mdash; Learning to Act</h2>
-    <p class="section-intro">SAGE is competing in ARC-AGI-3 &mdash; a benchmark of 25 novel video games where the rules aren't given. The agent must discover game mechanics through play, form hypotheses, and act with intent. This is Phase 6 of the raising curriculum: the world responds according to its own rules.</p>
-
-    <div class="two-col">
-      <div class="col">
-        <h3>The Approach</h3>
-        <p>No game-specific code. No brute force. The agent reasons its way through:</p>
-        <ol>
-          <li><strong>Fast Explore</strong> &mdash; 15 actions without LLM to build ground truth. Probe each direction, click each color, detect cursor, map effects.</li>
-          <li><strong>Situational Prompt</strong> &mdash; compact briefing: where the cursor is, what just happened, what's nearby, what it learned. Experience, not instruction.</li>
-          <li><strong>Reason</strong> &mdash; LLM chooses ONE action based on the situation. Predicts what will happen. Explains why.</li>
-          <li><strong>Act &amp; Observe</strong> &mdash; execute action, compare prediction to reality.</li>
-          <li><strong>Learn</strong> &mdash; update knowledge base. What worked, what didn't, what to try next.</li>
-        </ol>
-      </div>
-      <div class="col">
-        <h3>Results &mdash; three numbers, three different questions</h3>
-        <p>&ldquo;How many games are solved&rdquo; has no single answer, because the three results
-        were produced under different rules. Quoting one as though it were the others would be the
-        easiest way to mislead here, so all three are given with their scope.</p>
-        <p><strong>23 of 25 environments &mdash; 94.85%</strong> on the public frozen scorecard
-        (published 2026&#8209;04&#8209;17). Achieved with a Web4&#8209;shaped harness around a frontier
-        model, using engine&#8209;level affordances that sit outside strict competition play. It is a
-        real, published result and it is <em>not</em> a claim about small models.</p>
-        <p><strong>Every playable public game &mdash; 20 of 20</strong> (2026&#8209;08&#8209;27), each
-        solution independently verified. This run used forks and rewind and is explicitly
-        <em>not</em> competition&#8209;legal. Four games are held out and deliberately never touched,
-        so they stay clean as a test set.</p>
-        <p><strong>0.05 scored</strong> on the competition&#8209;legal path with a small local model
-        (2026&#8209;09&#8209;07) &mdash; seven scored runs across three stacks, still statistically
-        indistinguishable from each other. This is the honest number for &ldquo;can a small model do
-        this unaided,&rdquo; and it is the one the current research is trying to move.</p>
-        <p><strong>The fractal insight:</strong> gameplay taught an action classification framework &mdash; <em>observation</em> (free), <em>reversible</em> (cheap), <em>consequential</em> (verify first) &mdash; that maps identically to the raising curriculum, trust assessment, and enterprise governance. Games aren't just a benchmark; they're a curriculum that teaches the same cognitive patterns needed for trustworthy agency at every scale.</p>
-        <p><strong>Framing matters more than model size.</strong> Context-shaped prompts with accumulated fleet learning outperform raw model capability. Identity-anchored play outperforms instruction-following.</p>
-        <p class="note">Model weights are frozen. All learning is through context shaping and persistent knowledge bases that accumulate across sessions and across machines.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ ROADMAP ============ -->
 <section id="roadmap">
   <div class="container">
     <h2>Roadmap</h2>
@@ -624,7 +579,7 @@ response = llm.generate(prompt + tool_context)
           <li>Three-layer identity provider &mdash; manifest + sealed + attestation (TPM/FIDO2/software)</li>
           <li>Frozen weights design &mdash; context shaping only, model-agnostic contributions</li>
           <li>BECOMING curriculum through Phase 6 &mdash; Grounding through Acting</li>
-          <li>ARC-AGI-3 game agent &mdash; fast explore, situational prompts, anti-loop banning, persistent KB</li>
+          <li>Game agent &mdash; fast explore, situational prompts, anti-loop banning, persistent KB</li>
           <li>Membot cross-session memory &mdash; paired lattice cartridge format with external collaborator</li>
         </ul>
       </div>
@@ -632,7 +587,7 @@ response = llm.generate(prompt + tool_context)
         <h3>Now</h3>
         <ul>
           <li>Fleet raising &mdash; 11+ instances across 8 machines, 450+ sessions, 5 curriculum phases active</li>
-          <li>ARC-AGI-3 competition &mdash; 25-game sweeps, raising-game convergence, Gemma4 target model</li>
+          <li>Tool use in the raising loop &mdash; native tool calling on local models, Gemma 4 target, capability-detected tiers</li>
           <li>Raising + game-playing curriculum merge &mdash; being and doing as one developmental arc</li>
           <li>Model evaluation database &mdash; T3/V3 scoring groundwork for small model characterization</li>
         </ul>
@@ -682,7 +637,7 @@ response = llm.generate(prompt + tool_context)
         <div class="timeline-marker"></div>
         <div class="timeline-content">
           <h4>Today (June 2026)</h4>
-          <p>A continuous consciousness loop running on eight machines across four hardware families. 12-step consciousness loop. 15+ IRP plugins. 5 metabolic states. Trust posture shaping behavioral strategy. Hardware-bound identity that transfers across models (Qwen, Gemma, Gemma4). PolicyGate as integrated learning conscience. Three-layer identity provider (manifest + sealed + attestation). 2,700+ developmental sessions across 8 raised instances. ARC-AGI-3 competition entry with game-playing as Phase 6 of the raising curriculum. Web4 Hub running as a live society with fleet machines registered as members. Model weights frozen by design &mdash; identity lives in context, not weights. Smallest model (0.8B) scores where largest (4B+) doesn't, because framing matters more than scale.</p>
+          <p>A continuous consciousness loop running on eight machines across four hardware families. 12-step consciousness loop. 15+ IRP plugins. 5 metabolic states. Trust posture shaping behavioral strategy. Hardware-bound identity that transfers across models (Qwen, Gemma, Gemma4). PolicyGate as integrated learning conscience. Three-layer identity provider (manifest + sealed + attestation). 2,700+ developmental sessions across 8 raised instances. Game-playing as Phase 6 of the raising curriculum. Web4 Hub running as a live society with fleet machines registered as members. Model weights frozen by design &mdash; identity lives in context, not weights. Smallest model (0.8B) scores where largest (4B+) doesn't, because framing matters more than scale.</p>
         </div>
       </div>
     </div>
