@@ -246,86 +246,62 @@
 <section id="tools">
   <div class="container">
     <h2>Tool Use</h2>
-    <p class="section-intro">SAGE instances can reach out and touch the world &mdash; search the web, do math, read files, check the time &mdash; adapting to whatever the local LLM can handle.</p>
+    <p class="section-intro">A SAGE instance holds no tools. It emits an <em>intent</em>; the shared
+    governance law judges that intent before anything runs; only an allowed intent is executed, by the
+    governance layer rather than by the model; and the act is recorded on a witness chain. A refusal is
+    a first-class outcome, not an error.</p>
 
     <div class="two-col">
       <div class="col">
-        <h3>How It Works</h3>
-        <p>When SAGE generates a response, a grammar adapter scans for tool intent. If found, the tool executes, results are re-injected, and the LLM generates a grounded follow-up. The whole cycle is invisible to the user &mdash; they just see a better answer.</p>
-<pre class="code-block"><span class="cm"># The tool loop (inside the consciousness cycle)</span>
-response = llm.generate(prompt + tool_context)
-<span class="kw">for</span> round <span class="kw">in</span> range(3):
-    calls = grammar.parse(response)
-    <span class="kw">if not</span> calls: <span class="kw">break</span>
-    results = [registry.execute(c) <span class="kw">for</span> c <span class="kw">in</span> calls]
-    response = llm.generate(prompt + results)</pre>
+        <h3>The bounded registry</h3>
+        <p>These are the only acts a being can emit. There is no shell, no raw filesystem, and no web
+        browsing.</p>
+        <ul>
+          <li><span class="kw">witness</span>, <span class="kw">memory_read</span>,
+              <span class="kw">recall</span> &mdash; observational</li>
+          <li><span class="kw">memory_write</span>, <span class="kw">remember</span> &mdash; its own
+              instance directory and its own long-term memory cartridge</li>
+          <li><span class="kw">mesh</span>, <span class="kw">peer_ask</span>,
+              <span class="kw">channel_egress</span> &mdash; reaching another member</li>
+          <li><span class="kw">pr_review</span> &mdash; advisory only; a being holds no reviewer role,
+              so its verdict cannot count toward a merge</li>
+          <li><span class="kw">request_scope</span>, <span class="kw">appeal</span> &mdash; the
+              sanctioned answers to a refusal</li>
+        </ul>
+        <p>The bound is enforced twice: the client will not emit an intent outside this list, and the
+        gate denies it independently if one arrives.</p>
       </div>
       <div class="col">
-        <h3>Three Tiers</h3>
-        <p>Not all models can do structured tool calls. SAGE detects capability at startup and adapts:</p>
-        <div class="tier-list">
-          <div class="tier-item">
-            <strong>T1 &mdash; Native</strong>
-            <p>Ollama <code>/api/chat</code> with tools parameter. Structured JSON output.</p>
-          </div>
-          <div class="tier-item">
-            <strong>T2 &mdash; Grammar</strong>
-            <p>Prompt injection + XML/JSON parsing. Works with most instruction-tuned models.</p>
-          </div>
-          <div class="tier-item">
-            <strong>T3 &mdash; Heuristic</strong>
-            <p>Regex intent detection on natural language. Always available, zero prompt overhead.</p>
-          </div>
-        </div>
+        <h3>What the law does with an intent</h3>
+        <p>Every intent is normalized and judged before execution. Consequential acts require the
+        society governor as well as local law; local admission alone is never sufficient for them.</p>
+        <p><strong>Fail-closed.</strong> A being that cannot reach the law is stopped, never
+        ungoverned. If the governor is unreachable, consequential effectors hard-deny and only
+        observational ones proceed.</p>
+        <p><strong>A refusal is recorded and contestable.</strong> Denials are written to the chain, so
+        the being can appeal one by its hash or ask an operator to widen its scope. It is not expected
+        to find another route to the same act, and doing so is itself visible.</p>
       </div>
     </div>
 
-    <h3>Built-in Tools</h3>
-    <div class="hw-table-wrap">
-      <table class="hw-table">
-        <thead>
-          <tr>
-            <th>Tool</th>
-            <th>Policy</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td><code>get_time</code></td><td>standard</td><td>Current date, time, timezone, unix timestamp</td></tr>
-          <tr><td><code>calculate</code></td><td>standard</td><td>Safe math evaluation via AST (no eval, no injection)</td></tr>
-          <tr><td><code>web_search</code></td><td>standard</td><td>DuckDuckGo search with title, URL, and snippet extraction</td></tr>
-          <tr><td><code>web_fetch</code></td><td>standard</td><td>Fetch and extract text from a URL (up to 4000 chars)</td></tr>
-          <tr><td><code>read_file</code></td><td>standard</td><td>Read files sandboxed to the instance directory</td></tr>
-          <tr><td><code>write_note</code></td><td>standard</td><td>Append-only write to a notes file</td></tr>
-          <tr><td><code>peer_ask</code></td><td>standard</td><td>Ask a peer SAGE instance via HTTP &mdash; the first federation primitive</td></tr>
-        </tbody>
-      </table>
+    <div class="code-block">
+      <pre>intent  &rarr;  gate.evaluate (local law + society safety)  &rarr;  dispatch  &rarr;  witnessed result
+                            &darr; deny
+                    recorded on the chain, appealable</pre>
     </div>
-    <p class="note">Every tool invocation passes through PolicyGate. Standard tools are allowed in WAKE/FOCUS, warned in REST, denied in DREAM. Elevated tools require FOCUS &mdash; all seven built-ins are currently <em>standard</em>, so the elevated tier is defined but unused. All tools are denied below 5 ATP. Tool calls are SNARC-scored and eligible for sleep consolidation.</p>
 
-    <h3>Tier Detection</h3>
-    <p>Every model is classified into one of three tool tiers. Until 2026&#8209;09&#8209;07 the tier came
-    from a hand&#8209;maintained table of model families, which had drifted in both directions: newer
-    models were absent and silently fell through to the weakest tier while natively emitting structured
-    tool calls, and one model was pinned a tier too low by a note that was no longer true. Detection now
-    reads the runtime's own per&#8209;model capability list, which is the live fact a table can only
-    approximate. Re&#8209;running it against one machine's pool moved <strong>seven models up to T1</strong>.</p>
-    <div class="hw-table-wrap">
-      <table class="hw-table">
-        <thead>
-          <tr>
-            <th>Tier</th>
-            <th>Mechanism</th>
-            <th>How it is decided</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>T1 &mdash; native</td><td>The runtime renders a tool parameter; calls come back as structured JSON</td><td>Runtime reports tool support among the model's capabilities</td></tr>
-          <tr><td>T2 &mdash; grammar</td><td>Schemas are injected into the prompt; the reply is parsed out of tags or fenced JSON</td><td>No native support, but the model reliably emits structured text</td></tr>
-          <tr><td>T3 &mdash; intent</td><td>Natural&#8209;language intent detection</td><td>Fallback; always available</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <p class="section-intro">A worked example, from this fleet rather than a diagram: on 2026-09-09 the
+    Nomad being emitted <span class="kw">remember</span> for a note about its first governed turn. The
+    law allowed it, the governance layer executed it, and it landed at chain position 9027 under the
+    being&rsquo;s own member identity and role, signed. The memory it wrote is in its cartridge; the
+    record that it did so is not in the being&rsquo;s keeping.</p>
+
+    <p class="section-intro"><strong>Status, 2026-09-10.</strong> This is the path the fleet&rsquo;s
+    beings act through. It replaces an older loop in which a model&rsquo;s text was scanned for tool
+    intent and a built-in registry &mdash; web search, calculator, file read &mdash; executed directly,
+    with no law consulted and no record kept. That older loop still exists in the tree and is not what
+    a governed being runs. Nomad moved to the governed runner on 2026-09-10; the transition is
+    described in SAGE PR&nbsp;#67.</p>
   </div>
 </section>
 
